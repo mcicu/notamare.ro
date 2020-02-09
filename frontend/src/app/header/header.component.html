@@ -1,0 +1,7 @@
+<mat-toolbar color="primary">
+  <span>notamare.ro</span>
+</mat-toolbar>
+<mat-slide-toggle #toggle>Turn on the awesome</mat-slide-toggle>
+
+<a *ngIf="toggle.checked" color="accent" mat-button
+   routerLink="/">Awesome</a>
