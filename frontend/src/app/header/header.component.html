@@ -1,7 +1,6 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" fxLayout="row" fxLayoutGap="10px">
   <span>notamare.ro</span>
+  <span>
+    <button mat-button>Gaseste tutore</button>
+  </span>
 </mat-toolbar>
-<mat-slide-toggle #toggle>Turn on the awesome</mat-slide-toggle>
-
-<a *ngIf="toggle.checked" color="accent" mat-button
-   routerLink="/">Awesome</a>
