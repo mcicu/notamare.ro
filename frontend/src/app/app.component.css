@@ -1,4 +1,20 @@
 .main-content {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+
 }
+
+.main-content .left-column {
+  padding: 30px;
+  background-color: #bad4ff;
+}
+
+.main-content .right-column {
+  background-color: #ddb0ff;
+}
+
+mat-card-header {
+  font-size: 20px;
+}
+
