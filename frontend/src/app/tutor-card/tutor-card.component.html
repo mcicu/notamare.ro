@@ -1,1 +1,18 @@
-<p>tutor-card works!</p>
+<mat-card color="primary" fxFlex="1 1 100" fxLayout="row" fxLayoutGap="10px">
+  <div fxFlex="1 1 20">
+    <img [src]="tutor.image" style="background-color: #363999" width="100%"/>
+  </div>
+  <mat-card-content fxFlex="1 1 60">
+    <h3>{{tutor.name}}</h3>
+    <h4>{{tutor.subjects}}</h4>
+    <div>
+      {{tutor.description}}
+    </div>
+  </mat-card-content>
+  <mat-card-actions fxLayout="column">
+    <div>
+      Pret: {{tutor.price}} RON
+    </div>
+    <button mat-button class="button-primary">Arata numar</button>
+  </mat-card-actions>
+</mat-card>
