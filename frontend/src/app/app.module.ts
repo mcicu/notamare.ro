@@ -6,16 +6,16 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule,
-  MatCardModule,
-  MatChipsModule,
-  MatGridListModule,
-  MatListModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatTabsModule,
-  MatToolbarModule
+    MatButtonModule,
+    MatCardModule,
+    MatChipsModule,
+    MatGridListModule,
+    MatListModule, MatRippleModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatTabsModule,
+    MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TutorCardComponent} from './tutor-card/tutor-card.component';
@@ -27,12 +27,12 @@ import {TutorListService} from './services/tutor-list.service';
     HeaderComponent,
     TutorCardComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule, FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule, MatCardModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule, FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule, MatCardModule, MatRippleModule
+    ],
   providers: [TutorListService],
   bootstrap: [AppComponent]
 })
