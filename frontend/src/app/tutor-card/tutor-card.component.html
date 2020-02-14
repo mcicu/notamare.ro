@@ -3,16 +3,26 @@
     <img [src]="tutor.image" style="background-color: #363999" width="100%"/>
   </div>
   <mat-card-content fxFlex="1 1 60">
-    <h3>{{tutor.name}}</h3>
+    <h2>{{tutor.name}}</h2>
     <h4>{{tutor.subjects}}</h4>
     <div>
       {{tutor.description}}
     </div>
   </mat-card-content>
-  <mat-card-actions fxLayout="column">
-    <div>
-      Pret: {{tutor.price}} RON
-    </div>
-    <button mat-button class="button-primary">Arata numar</button>
-  </mat-card-actions>
+  <mat-list fxFlex="1 0 200px">
+    <mat-list-item>
+      <div fxLayout="row" fxLayoutGap="5px" fxFlex="0 0 100" class="center-text">
+        <div fxLayout="column" fxFlex="1 1 40">
+          Reviews
+        </div>
+        <div fxLayout="column" fxFlex="1 1 60">
+          <div>{{tutor.price}} RON</div>
+          <div>2 ore</div>
+        </div>
+      </div>
+    </mat-list-item>
+    <mat-list-item>
+      <button class="button-primary" mat-button fxFlex="1 1 100">Call</button>
+    </mat-list-item>
+  </mat-list>
 </mat-card>

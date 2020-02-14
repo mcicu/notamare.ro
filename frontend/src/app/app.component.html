@@ -7,10 +7,10 @@
     Side nav
   </mat-sidenav>
   <mat-sidenav-content class="main-content">
-    <div class="left-column" fxFlex="1 1 40" fxLayout="column" fxLayoutGap="10px">
+    <div class="left-column" fxFlex="1 1 50" fxLayout="column" fxLayoutGap="10px">
       <app-tutor-card *ngFor="let tutor of tutorListService.getTutors()" [tutor]="tutor"></app-tutor-card>
     </div>
-    <div class="right-column" fxFlex="1 1 40">Cico</div>
+    <div class="right-column" fxFlex="1 1 40">Right column</div>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
