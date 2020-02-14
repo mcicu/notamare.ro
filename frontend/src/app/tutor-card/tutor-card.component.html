@@ -9,20 +9,24 @@
       {{tutor.description}}
     </div>
   </mat-card-content>
-  <mat-list fxFlex="1 0 200px">
-    <mat-list-item>
-      <div fxLayout="row" fxLayoutGap="5px" fxFlex="0 0 100" class="center-text">
-        <div fxLayout="column" fxFlex="1 1 40">
-          Reviews
+  <div fxFlex="1 0 200px" fxLayout="column" fxLayoutGap="10px">
+    <div>
+      <div class="center-text" fxFlex="0 0 100" fxLayout="row" fxLayoutGap="5px">
+        <div class="tutor-reviews-summary" fxFlex="1 1 40" fxLayout="column">
+          <div class="stars"><i class="fa fa-star"></i> <br/> 5 / 5</div>
+
         </div>
-        <div fxLayout="column" fxFlex="1 1 60">
-          <div>{{tutor.price}} RON</div>
-          <div>2 ore</div>
+        <div class="tutor-pricing" fxFlex="1 1 60" fxLayout="column">
+          <div class="price">{{tutor.price}} ron</div>
+          <div class="time">2 ore</div>
         </div>
       </div>
-    </mat-list-item>
-    <mat-list-item>
-      <button class="button-primary" mat-button fxFlex="1 1 100">Call</button>
-    </mat-list-item>
-  </mat-list>
+    </div>
+    <div>
+      <button color="primary" fxFlex="1 1 100" mat-raised-button>Contact</button>
+    </div>
+    <div>
+      <a fxFlex="1 1 100" mat-stroked-button color="accent">Aprecieri</a>
+    </div>
+  </div>
 </mat-card>
