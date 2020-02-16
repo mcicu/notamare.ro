@@ -2,15 +2,17 @@ export class Tutor {
   name: string;
   image: string;
   subjects: string[];
-  price: number;
+  session: { price: number, duration: number };
   description: string;
+  stars: number;
 
 
-  constructor(name: string, image: string, subjects: string[], price: number, description: string) {
+  constructor(name: string, image: string, subjects: string[], session: { price: number; duration: number }, description: string, stars: number) {
     this.name = name;
     this.image = image;
     this.subjects = subjects;
-    this.price = price;
+    this.session = session;
     this.description = description;
+    this.stars = stars;
   }
 }

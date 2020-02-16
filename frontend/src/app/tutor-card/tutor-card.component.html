@@ -1,29 +1,31 @@
-<mat-card color="primary" fxFlex="1 1 100" fxLayout="row" fxLayoutGap="10px">
-  <div fxFlex="1 1 20">
+<mat-card fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutGap="10px">
+  <div fxFlex="1 1 150px">
     <img [src]="tutor.image" style="background-color: #363999" width="100%"/>
   </div>
-  <mat-card-content fxFlex="1 1 60">
+
+  <mat-card-content fxFlex="1 1 100">
     <h2>{{tutor.name}}</h2>
     <h4>{{tutor.subjects}}</h4>
     <div>
       {{tutor.description}}
     </div>
   </mat-card-content>
-  <div fxFlex="1 0 200px" fxLayout="column" fxLayoutGap="10px">
+
+  <div fxFlex="1 0 180px" fxLayout="column" fxLayoutGap="10px">
     <div>
       <div class="center-text" fxFlex="0 0 100" fxLayout="row" fxLayoutGap="5px">
         <div class="tutor-reviews-summary" fxFlex="1 1 40" fxLayout="column">
-          <div class="stars"><i class="fa fa-star"></i> <br/> 5 / 5</div>
+          <div class="stars"><i class="fa fa-star"></i> <br/> {{tutor.stars}} / 5</div>
 
         </div>
         <div class="tutor-pricing" fxFlex="1 1 60" fxLayout="column">
-          <div class="price">{{tutor.price}} ron</div>
-          <div class="time">2 ore</div>
+          <div class="price">{{tutor.session.price}} ron</div>
+          <div class="time">{{tutor.session.duration}} ore</div>
         </div>
       </div>
     </div>
     <div>
-      <button color="primary" fxFlex="1 1 100" mat-raised-4.7button>Contact</button>
+      <button color="primary" fxFlex="1 1 100" mat-raised-button>Contact</button>
     </div>
     <div>
       <a fxFlex="1 1 100" mat-stroked-button color="accent">Aprecieri</a>
