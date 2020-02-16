@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {TutorListService} from './services/tutor-list.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,4 @@ import {TutorListService} from './services/tutor-list.service';
 })
 export class AppComponent {
   title = 'frontend';
-
-  constructor(private tutorListService: TutorListService) {
-  }
 }

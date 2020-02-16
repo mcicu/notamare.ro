@@ -10,7 +10,7 @@ import {
     MatCardModule,
     MatChipsModule,
     MatGridListModule,
-    MatListModule, MatRippleModule,
+    MatListModule, MatRippleModule, MatSelectModule,
     MatSidenavModule,
     MatSliderModule,
     MatSlideToggleModule,
@@ -20,18 +20,20 @@ import {
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TutorCardComponent} from './tutor-card/tutor-card.component';
 import {TutorListService} from './services/tutor-list.service';
+import { TutorsComponent } from './tutors/tutors.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TutorCardComponent
+    TutorCardComponent,
+    TutorsComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule, FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule, MatCardModule, MatRippleModule
+        MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule, FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule, MatCardModule, MatRippleModule, MatSelectModule
     ],
   providers: [TutorListService],
   bootstrap: [AppComponent]

@@ -1,16 +1,1 @@
-.main-content {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-
-}
-
-.main-content .left-column {
-  padding: 30px;
-  background-color: #eaeaff;
-}
-
-.main-content .right-column {
-  /*background-color: #ddb0ff;*/
-}
 
