@@ -1,4 +1,4 @@
-<mat-card fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutGap="10px">
+<mat-card fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutGap="10px">
   <div fxFlex="1 1 150px">
     <img [src]="tutor.image" style="background-color: #363999" width="100%"/>
   </div>
@@ -25,10 +25,10 @@
       </div>
     </div>
     <div>
-      <button color="primary" fxFlex="1 1 100" mat-raised-button>Contact</button>
+      <button color="primary" fxFlex="1 1 100" mat-raised-button [routerLink]="['overview', tutor.id]">Contact</button>
     </div>
     <div>
-      <a fxFlex="1 1 100" mat-stroked-button color="accent">Aprecieri</a>
+      <a color="accent" fxFlex="1 1 100" mat-stroked-button>Aprecieri</a>
     </div>
   </div>
 </mat-card>

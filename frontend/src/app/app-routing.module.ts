@@ -1,10 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {TutorsComponent} from './tutors/tutors.component';
+import {TutorOverviewComponent} from './tutors/tutor-overview/tutor-overview.component';
 
 
 const routes: Routes = [
-  {path: 'tutori', component: TutorsComponent}
+  {
+    path: 'tutors', component: TutorsComponent, children: [
+      {path: 'overview', component: TutorOverviewComponent},
+      {path: 'overview/:tutor-id', component: TutorOverviewComponent}
+    ]
+  }
 ];
 
 @NgModule({

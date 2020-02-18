@@ -18,16 +18,18 @@ import {
     MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {TutorCardComponent} from './tutor-card/tutor-card.component';
+import {TutorCardComponent} from './tutors/tutor-card/tutor-card.component';
 import {TutorListService} from './services/tutor-list.service';
 import { TutorsComponent } from './tutors/tutors.component';
+import { TutorOverviewComponent } from './tutors/tutor-overview/tutor-overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     TutorCardComponent,
-    TutorsComponent
+    TutorsComponent,
+    TutorOverviewComponent
   ],
     imports: [
         BrowserModule,
