@@ -1,10 +1,20 @@
-<div *ngIf="tutor">
-  <mat-card>
-    <mat-card-header>
-      <h3>{{tutor.name}}</h3>
-    </mat-card-header>
-    <mat-card-content>
+<div *ngIf="tutor" class="tutor-overview">
+  <div fxLayout="column">
+    <div>
+      <h1>{{tutor.name}}</h1>
+      <mat-divider></mat-divider>
+      <h2><i class="fa fa-phone"></i> {{tutor.phoneNumber}}</h2>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+      <h3><i class="fa fa-map-marker" style="font-size:1.5em"></i> {{tutor.county}} </h3>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tutoringLocation of tutor.preferences.tutoringLocations" color="accent" selected>{{tutoringLocation}}</mat-chip>
+      </mat-chip-list>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
       <p>{{tutor.description}}</p>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
 </div>

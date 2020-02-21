@@ -1,0 +1,10 @@
+.tutor-overview {
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 0 5px -3px #b2b2b2;
+  font-family: "Roboto Slab", "Helvetica Neue", serif;
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+}
