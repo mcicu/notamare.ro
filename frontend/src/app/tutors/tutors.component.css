@@ -1,10 +1,13 @@
 .main-content {
+  background-color: transparent;
 }
 
 .main-content .left-column {
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .main-content .right-column {
   padding-top: 30px;
+  padding-bottom: 30px;
 }

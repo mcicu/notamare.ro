@@ -16,7 +16,10 @@ export class TutorListService {
       '0349405394',
       'Bucuresti',
       5,
-      {studentLevel: [], tutoringLocations: ['Online', 'La domiciliul studentului']})
+      {
+        studentLevels: ['Clasele I - IV', 'Clasele V - VIII', 'Liceu', 'Facultate'],
+        tutoringLocations: ['Online', 'La domiciliul studentului']
+      })
   ];
 
   constructor() {

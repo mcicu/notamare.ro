@@ -8,10 +8,10 @@ export class Tutor {
   phoneNumber: string;
   county: string;
   stars: number;
-  preferences: { studentLevel: string[], tutoringLocations: string[] };
+  preferences: { studentLevels: string[], tutoringLocations: string[] };
 
 
-  constructor(id: string, name: string, image: string, subjects: string[], session: { price: number; duration: number }, description: string, phoneNumber: string, county: string, stars: number, preferences: { studentLevel: string[]; tutoringLocations: string[] }) {
+  constructor(id: string, name: string, image: string, subjects: string[], session: { price: number; duration: number }, description: string, phoneNumber: string, county: string, stars: number, preferences: { studentLevels: string[]; tutoringLocations: string[] }) {
     this.id = id;
     this.name = name;
     this.image = image;
