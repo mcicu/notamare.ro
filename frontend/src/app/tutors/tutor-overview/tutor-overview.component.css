@@ -8,3 +8,8 @@
 h1, h2, h3 {
   font-weight: 500;
 }
+
+.field-marker {
+  font-size: 1.5em;
+  margin-right: 10px;
+}

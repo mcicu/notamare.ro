@@ -1,22 +1,34 @@
 <div *ngIf="tutor" class="tutor-overview">
   <div fxLayout="column">
-    <div>
-      <h1>{{tutor.name}}</h1>
-      <mat-divider></mat-divider>
-      <h2><i class="fa fa-phone"></i> {{tutor.phoneNumber}}</h2>
+    <div fxLayout="row" fxLayoutAlign="left center">
+      <div fxFlex="1 1" fxLayout="column">
+        <h1>{{tutor.name}}</h1>
+        <h2>
+          <i class="fa fa-phone field-marker"></i><a [href]="'tel:' + tutor.phoneNumber">{{tutor.phoneNumber}}</a>
+        </h2>
+      </div>
+      <div>
+        <img [src]="tutor.image" style="max-width: 150px;">
+      </div>
     </div>
     <mat-divider></mat-divider>
-    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
-      <h3><i class="fa fa-map-marker" style="font-size:1.5em"></i> {{tutor.county}} </h3>
-      <mat-chip-list>
-        <mat-chip *ngFor="let tutoringLocation of tutor.preferences.tutoringLocations" color="accent" selected>{{tutoringLocation}}</mat-chip>
-      </mat-chip-list>
+    <div>
+      <h3><i class="fa fa-map-marker field-marker"></i> {{tutor.county}} </h3>
     </div>
     <mat-divider></mat-divider>
     <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
-      <h3><i class="fa fa-child" style="font-size:1.5em"></i></h3>
+      <h4><i class="fa fa-globe field-marker"></i></h4>
+        <mat-chip-list>
+          <mat-chip *ngFor="let tutoringLocation of tutor.preferences.tutoringLocations" color="accent"
+                    selected>{{tutoringLocation}}</mat-chip>
+        </mat-chip-list>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
+      <h4><i class="fa fa-child field-marker"></i></h4>
       <mat-chip-list>
-        <mat-chip *ngFor="let studentLevel of tutor.preferences.studentLevels" color="primary" selected>{{studentLevel}}</mat-chip>
+        <mat-chip *ngFor="let studentLevel of tutor.preferences.studentLevels" color="primary"
+                  selected>{{studentLevel}}</mat-chip>
       </mat-chip-list>
     </div>
     <mat-divider></mat-divider>

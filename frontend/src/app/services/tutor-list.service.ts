@@ -18,7 +18,7 @@ export class TutorListService {
       5,
       {
         studentLevels: ['Clasele I - IV', 'Clasele V - VIII', 'Liceu', 'Facultate'],
-        tutoringLocations: ['Online', 'La domiciliul studentului']
+        tutoringLocations: ['Online', 'La domiciliul studentului', 'La domiciliul tutorelui']
       })
   ];
 
