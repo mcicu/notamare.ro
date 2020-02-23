@@ -2,7 +2,7 @@
   background-color: white;
   padding: 30px;
   box-shadow: 0 1px 6px -3px #b2b2b2;
-  font-family: "Roboto Slab", "Helvetica Neue", serif;
+  font-size: 14px;
 }
 
 h1, h2, h3 {
@@ -12,4 +12,46 @@ h1, h2, h3 {
 .field-marker {
   font-size: 1.5em;
   margin-right: 10px;
+}
+
+.delimited-row {
+  padding: 10px 20px;
+  /*border: 1px solid #f2f2f6;
+  background-color: #f9f9fd;*/
+}
+
+.tutor-photo img {
+  border-radius: 100%;
+  max-width: 140px;
+  border: 5px solid white;
+}
+
+.tutor-name {
+  font-size: 2.8em;
+  font-weight: 500;
+  color: #40408a;
+}
+
+.tutor-call-button a {
+  font-size: 1.6em;
+  line-height: 2.1em;
+  font-weight: 600;
+  letter-spacing:1px;
+  background-color: #24327d;
+  color :white;
+}
+
+.tutor-description {
+  text-align: justify;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1em;
+}
+
+.tutor-call-button a i {
+  margin-right: 10px;
+}
+
+.tutor-county {
+  font-size: 1.5em;
+  font-weight: 500;
 }

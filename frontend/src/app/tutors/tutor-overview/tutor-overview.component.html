@@ -1,39 +1,38 @@
-<div *ngIf="tutor" class="tutor-overview">
-  <div fxLayout="column">
-    <div fxLayout="row" fxLayoutAlign="left center">
-      <div fxFlex="1 1" fxLayout="column">
-        <h1>{{tutor.name}}</h1>
-        <h2>
-          <i class="fa fa-phone field-marker"></i><a [href]="'tel:' + tutor.phoneNumber">{{tutor.phoneNumber}}</a>
-        </h2>
+<div *ngIf="tutor" class="tutor-overview mat-typography">
+  <div fxLayout="column" fxLayoutGap="10px">
+    <div class="delimited-row" fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="20px">
+      <div class="tutor-photo">
+        <img [src]="tutor.image">
       </div>
-      <div>
-        <img [src]="tutor.image" style="max-width: 150px;">
+      <div fxFlex="1 1" fxLayout="column" fxLayoutGap="30px">
+        <div class="tutor-name">{{tutor.name}}</div>
+        <div class="tutor-call-button">
+          <a [href]="'tel:' + tutor.phoneNumber" mat-stroked-button color="primary" >
+            <i class="fa fa-phone"></i>
+            {{tutor.phoneNumber}}
+          </a>
+        </div>
       </div>
     </div>
-    <mat-divider></mat-divider>
-    <div>
-      <h3><i class="fa fa-map-marker field-marker"></i> {{tutor.county}} </h3>
+
+    <div class="delimited-row">
+      <p class="tutor-description">{{tutor.description}}</p>
     </div>
-    <mat-divider></mat-divider>
-    <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
-      <h4><i class="fa fa-globe field-marker"></i></h4>
-        <mat-chip-list>
-          <mat-chip *ngFor="let tutoringLocation of tutor.preferences.tutoringLocations" color="accent"
-                    selected>{{tutoringLocation}}</mat-chip>
-        </mat-chip-list>
+
+    <div class="delimited-row" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="tutor-county"><i class="fa fa-map-marker field-marker"></i> {{tutor.county}} </div>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tutoringLocation of tutor.preferences.tutoringLocations" color="accent"
+                  selected>{{tutoringLocation}}</mat-chip>
+      </mat-chip-list>
     </div>
-    <mat-divider></mat-divider>
-    <div fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
+
+    <div class="delimited-row" fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
       <h4><i class="fa fa-child field-marker"></i></h4>
       <mat-chip-list>
         <mat-chip *ngFor="let studentLevel of tutor.preferences.studentLevels" color="primary"
                   selected>{{studentLevel}}</mat-chip>
       </mat-chip-list>
-    </div>
-    <mat-divider></mat-divider>
-    <div>
-      <p>{{tutor.description}}</p>
     </div>
   </div>
 </div>

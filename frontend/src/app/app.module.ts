@@ -31,12 +31,12 @@ import { TutorOverviewComponent } from './tutors/tutor-overview/tutor-overview.c
     TutorsComponent,
     TutorOverviewComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule, FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule, MatCardModule, MatRippleModule, MatSelectModule, MatIconModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule, FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule, MatCardModule, MatRippleModule, MatSelectModule, MatIconModule
+  ],
   providers: [TutorListService],
   bootstrap: [AppComponent]
 })
