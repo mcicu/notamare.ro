@@ -1,6 +1,10 @@
-<mat-toolbar color="primary" fxLayout="row" fxLayoutGap="10px">
-  <span>notamare.ro</span>
-  <span>
-    <button [routerLink]="['/tutors']" mat-button>Gaseste tutore</button>
-  </span>
-</mat-toolbar>
+<nav class="mat-elevation-z6" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="10px">
+  <div fxFlex="1 1 40">
+    <a [routerLink]="['/']" mat-button>notamare.ro</a>
+    <a [routerLink]="['/tutors']" mat-button>Gaseste tutore</a>
+  </div>
+  <div fxFlex="1 1 40" fxLayoutAlign="end">
+    <a [routerLink]="['/']" mat-raised-button>Cont nou</a>
+    <a [routerLink]="['/']" mat-button>Autentificare</a>
+  </div>
+</nav>
