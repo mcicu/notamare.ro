@@ -2,8 +2,6 @@
   background-color: transparent;
   display: flex;
   justify-content: space-evenly;
-  height: 100vh;
-  overflow: auto;
 }
 
 .main-content .left-column {
@@ -17,10 +15,6 @@
   padding-bottom: 30px;
   width: 45%;
   align-self: flex-start;
-}
-
-.sticky {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
+  /*max-height: calc(100vh - 0px);
+  overflow: auto;*/
 }
