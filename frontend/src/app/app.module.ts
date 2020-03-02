@@ -6,17 +6,17 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule,
-  MatCardModule,
-  MatChipsModule,
-  MatGridListModule, MatIconModule,
-  MatListModule, MatRippleModule, MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatInputModule, MatFormFieldModule
+    MatButtonModule,
+    MatCardModule,
+    MatChipsModule,
+    MatGridListModule, MatIconModule,
+    MatListModule, MatRippleModule, MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatInputModule, MatFormFieldModule, MatCheckboxModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TutorCardComponent} from './tutors/tutor-card/tutor-card.component';
@@ -35,12 +35,12 @@ import {TutorService} from './services/tutor.service';
     TutorOverviewComponent,
     TutorProfileComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule, FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule, MatCardModule, MatRippleModule, MatSelectModule, MatIconModule, MatInputModule, MatFormFieldModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule, FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule, MatCardModule, MatRippleModule, MatSelectModule, MatIconModule, MatInputModule, MatFormFieldModule, MatCheckboxModule
+    ],
   providers: [TutorListService, TutorService],
   bootstrap: [AppComponent]
 })
