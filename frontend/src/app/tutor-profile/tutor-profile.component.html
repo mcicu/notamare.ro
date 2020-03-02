@@ -1,26 +1,41 @@
-<div class="main-content" fxLayoutAlign="center" fxLayoutGap="30px" fxLayout="row">
-  <div class="left-column" fxFlex="0 1 150px">
-    <img [src]="tutor.image" width="100%"/>
-  </div>
-  <div class="right-column" fxFlex="1 1 40" fxLayout="column">
-    <mat-form-field>
-      <mat-label>Nume</mat-label>
-      <input matInput [value]="tutor.name" />
-    </mat-form-field>
+<div class="main-content" fxLayout="row" fxLayoutAlign="center">
+  <div class="one-column" fxFlex="1 1" fxLayoutGap="40px">
+    <div class="left-column" fxFlex="0 1 150px">
+      <img [src]="tutor.image" width="100%"/>
+    </div>
+    <div class="right-column" fxFlex="1 1" fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>Nume</mat-label>
+        <input [value]="tutor.name" matInput/>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Locatie</mat-label>
-      <input matInput  [value]="tutor.county" />
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Locatie</mat-label>
+        <input [value]="tutor.county" matInput/>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Numar de telefon</mat-label>
-      <input matInput  [value]="tutor.phoneNumber" />
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Numar de telefon</mat-label>
+        <input [value]="tutor.phoneNumber" matInput/>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Descriere</mat-label>
-      <textarea matInput  [value]="tutor.description"></textarea>
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Descriere</mat-label>
+        <textarea [value]="tutor.description" matInput rows="10"></textarea>
+      </mat-form-field>
+
+      <div fxLayoutGap="10px">
+        <mat-form-field appearance="outline">
+          <mat-label>Pret</mat-label>
+          <input [value]="tutor.session.price" matInput type="number"/>
+          <div matSuffix>RON</div>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Durata sedinta</mat-label>
+          <input [value]="tutor.session.duration" matInput/>
+        </mat-form-field>
+      </div>
+    </div>
   </div>
 </div>
