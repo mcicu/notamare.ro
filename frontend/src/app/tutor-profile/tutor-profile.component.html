@@ -1,7 +1,9 @@
 <div class="main-content" fxLayout="row" fxLayoutAlign="center">
   <div class="one-column" fxFlex="1 1" fxLayoutGap="40px">
-    <div class="left-column" fxFlex="0 0 150px">
-      <img [src]="tutor.image" width="100%"/>
+    <div class="left-column" fxFlex="0 0 150px" fxLayout="column" fxLayoutAlign="start center">
+      <a mat-button>
+        <img [src]="tutor.image" width="100%"/>
+      </a>
     </div>
     <div class="right-column" fxFlex="1 1" fxLayout="column" fxLayoutGap="10px">
       <mat-form-field>
@@ -14,7 +16,7 @@
         <input [value]="tutor.phoneNumber" matInput/>
       </mat-form-field>
 
-      <div fxLayoutGap="10px">
+      <div fxLayoutGap="15px">
         <mat-form-field class="tutor-session-price">
           <mat-label>Pret</mat-label>
           <input [value]="tutor.session.price" matInput/>
@@ -23,7 +25,12 @@
 
         <mat-form-field class="tutor-session-duration">
           <mat-label>Durata sedinta</mat-label>
-          <input [value]="tutor.session.duration" matInput/>
+          <mat-select>
+            <mat-option value="1 ora">1 ora</mat-option>
+            <mat-option value="1 ora si 30 minute">1 ora si 30 minute</mat-option>
+            <mat-option value="2 ore">2 ore</mat-option>
+            <mat-option value="Mai mult de 2 ore">Mai mult de 2 ore</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
 
@@ -43,7 +50,7 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Desfasure</mat-label>
+        <mat-label>Nivel student</mat-label>
         <mat-select multiple="true">
           <mat-option>Clasele I-IV</mat-option>
           <mat-option>Clasele V-VIII</mat-option>
@@ -52,10 +59,19 @@
         </mat-select>
       </mat-form-field>
 
+      <mat-form-field>
+        <mat-label>Materii</mat-label>
+        <input [value]="tutor.subjects" matInput/>
+      </mat-form-field>
+
       <mat-form-field appearance="outline">
         <mat-label>Descriere</mat-label>
         <textarea [value]="tutor.description" matInput rows="10"></textarea>
       </mat-form-field>
+
+      <div fxFlex="1">
+        <button color="primary" mat-flat-button>Salveaza modificarile</button>
+      </div>
     </div>
   </div>
 </div>
