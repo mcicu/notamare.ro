@@ -1,6 +1,6 @@
 package ro.notamare.backend.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,10 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tutors")
+@AllArgsConstructor
 public class TutorsController {
 
-    @Autowired
-    TutorRepository tutorRepository;
+    private final TutorRepository tutorRepository;
 
     @RequestMapping()
     private List<Tutor> getAllTutors() {
