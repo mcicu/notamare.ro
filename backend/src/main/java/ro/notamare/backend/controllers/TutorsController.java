@@ -5,27 +5,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import ro.notamare.backend.entities.Tutor;
-import ro.notamare.backend.repositories.TutorRepository;
+import ro.notamare.backend.dtos.TutorDTO;
+import ro.notamare.backend.services.TutorService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/tutors")
 @AllArgsConstructor
 public class TutorsController {
 
-    private final TutorRepository tutorRepository;
+    private final TutorService tutorService;
 
     @RequestMapping()
-    private List<Tutor> getAllTutors() {
-        return tutorRepository.findAll();
+    private List<TutorDTO> getAllTutors() {
+        return tutorService.getTutors();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{tutorId}")
-    private Tutor getTutor(@PathVariable("tutorId") String tutorId) {
-        return tutorRepository.findById(tutorId).get();
+    private Optional<TutorDTO> getTutor(@PathVariable("tutorId") String tutorId) {
+        return tutorService.getTutor(tutorId);
     }
-
-
 }
