@@ -1,0 +1,39 @@
+type Tutor {
+    id: String!
+    name: String!
+    image: String
+    phoneNumber: String
+    description: String
+    location: String
+    #sessionPreferences: SessionPreferences
+}
+
+type SessionPreferences {
+    price: Float
+    duration: String
+    subjects: [String]
+    studentLevels: [String]
+    places: [String]
+}
+
+enum SessionDuration {
+    ONE_HOUR
+    ONE_HOUR_AND_HALF
+    TWO_HOURS
+    MORE_THAN_TWO_HOURS
+}
+
+enum StudentLevel {
+    PRIMARY_SCHOOL
+    MIDDLE_SCHOOL
+    HIGH_SCHOOL
+    FACULTY
+}
+
+enum SessionPlace {
+    ONLINE
+    TUTOR_PLACE
+    STUDENT_PLACE
+    TUTORING_CENTRE
+}
+
