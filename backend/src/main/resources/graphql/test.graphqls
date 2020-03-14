@@ -5,7 +5,7 @@ schema {
 
 # The Root Query for the application
 type Query {
-    allTutors: [Tutor]!
+    tutors: [Tutor]!
 }
 
 # The Root Mutation for the application

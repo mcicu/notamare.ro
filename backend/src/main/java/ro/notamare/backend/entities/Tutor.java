@@ -8,6 +8,8 @@ import ro.notamare.backend.enums.SessionDuration;
 import ro.notamare.backend.enums.SessionPlace;
 import ro.notamare.backend.enums.StudentLevel;
 
+import java.util.List;
+
 @Document(collection = "tutors")
 @Getter
 @Setter
@@ -27,8 +29,8 @@ public class Tutor {
     public static class SessionPreferences {
         private Double price;
         private SessionDuration duration;
-        private String[] subjects;
-        private StudentLevel[] studentLevels;
-        private SessionPlace[] places;
+        private List<String> subjects;
+        private List<StudentLevel> studentLevels;
+        private List<SessionPlace> places;
     }
 }

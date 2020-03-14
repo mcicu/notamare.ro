@@ -5,7 +5,7 @@ type Tutor {
     phoneNumber: String
     description: String
     location: String
-    #sessionPreferences: SessionPreferences
+    sessionPreferences: SessionPreferences
 }
 
 type SessionPreferences {
@@ -13,7 +13,7 @@ type SessionPreferences {
     duration: String
     subjects: [String]
     studentLevels: [String]
-    places: [String]
+    places: [SessionPlace]
 }
 
 enum SessionDuration {

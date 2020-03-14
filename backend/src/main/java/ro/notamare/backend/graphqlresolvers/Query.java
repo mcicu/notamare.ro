@@ -14,7 +14,7 @@ public class Query implements GraphQLQueryResolver {
 
     private final TutorRepository tutorRepository;
 
-    public List<Tutor> allTutors() {
+    public List<Tutor> tutors() {
         return tutorRepository.findAll();
     }
 }
