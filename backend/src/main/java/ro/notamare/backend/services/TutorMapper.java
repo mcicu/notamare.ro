@@ -19,4 +19,8 @@ public class TutorMapper {
     public static TutorDTO toDTO(Tutor entity) {
         return mapper.map(entity, TutorDTO.class);
     }
+
+    public static Tutor toEntity(TutorDTO dto) {
+        return mapper.map(dto, Tutor.class);
+    }
 }

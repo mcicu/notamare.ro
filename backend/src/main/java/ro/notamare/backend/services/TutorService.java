@@ -3,6 +3,7 @@ package ro.notamare.backend.services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ro.notamare.backend.dtos.TutorDTO;
+import ro.notamare.backend.entities.Tutor;
 import ro.notamare.backend.repositories.TutorRepository;
 
 import java.util.List;
@@ -24,5 +25,10 @@ public class TutorService {
         return tutorRepository.findAll().stream()
                 .map(TutorMapper::toDTO)
                 .collect(Collectors.toUnmodifiableList());
+    }
+
+    public String createTutor(TutorDTO tutorDTO) {
+        Tutor tutor = TutorMapper.toEntity(tutorDTO);
+        return tutorRepository.insert(tutor).getId();
     }
 }
