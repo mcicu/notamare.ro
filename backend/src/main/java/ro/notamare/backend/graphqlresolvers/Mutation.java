@@ -15,4 +15,14 @@ public class Mutation implements GraphQLMutationResolver {
     public Tutor createTutor(Tutor tutor) {
         return tutorRepository.save(tutor);
     }
+
+    public Tutor updateTutor(String id, Tutor tutor) {
+        tutor.setId(id);
+        return tutorRepository.save(tutor);
+    }
+
+    public Boolean deleteTutor(String id) {
+        tutorRepository.deleteById(id);
+        return true;
+    }
 }

@@ -1,6 +1,6 @@
 schema {
     query: Query
-    #mutation: Mutation
+    mutation: Mutation
 }
 
 # The Root Query for the application
@@ -11,4 +11,9 @@ type Query {
 # The Root Mutation for the application
 type Mutation {
     createTutor(tutor: TutorInput) : Tutor!
+    updateTutor(id: String, tutor: TutorInput): Tutor!
+    deleteTutor(id: String): Boolean
+}
+
+type Void {
 }

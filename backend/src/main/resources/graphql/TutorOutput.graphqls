@@ -1,0 +1,17 @@
+type Tutor {
+    id: String!
+    name: String!
+    image: String
+    phoneNumber: String
+    description: String
+    location: String
+    sessionPreferences: SessionPreferences
+}
+
+type SessionPreferences {
+    price: Float
+    duration: SessionDuration
+    subjects: [String]
+    studentLevels: [StudentLevel]
+    places: [SessionPlace]
+}
