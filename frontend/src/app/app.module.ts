@@ -5,24 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatFormFieldModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatTabsModule,
-  MatToolbarModule
-} from '@angular/material';
+
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TutorCardComponent} from './tutors/tutor-card/tutor-card.component';
 import {TutorListService} from './services/tutor-list.service';
@@ -32,6 +15,22 @@ import {TutorProfileComponent} from './tutor-profile/tutor-profile.component';
 import {TutorService} from './services/tutor.service';
 import {GraphQLModule} from './graphql.module';
 import {HttpClientModule} from '@angular/common/http';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatInputModule} from '@angular/material/input';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatRippleModule} from '@angular/material/core';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
