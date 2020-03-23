@@ -6,17 +6,22 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-    MatButtonModule,
-    MatCardModule,
-    MatChipsModule,
-    MatGridListModule, MatIconModule,
-    MatListModule, MatRippleModule, MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatInputModule, MatFormFieldModule, MatCheckboxModule
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatTabsModule,
+  MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TutorCardComponent} from './tutors/tutor-card/tutor-card.component';
@@ -25,6 +30,8 @@ import {TutorsComponent} from './tutors/tutors.component';
 import {TutorOverviewComponent} from './tutors/tutor-overview/tutor-overview.component';
 import {TutorProfileComponent} from './tutor-profile/tutor-profile.component';
 import {TutorService} from './services/tutor.service';
+import {GraphQLModule} from './graphql.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,12 +42,15 @@ import {TutorService} from './services/tutor.service';
     TutorOverviewComponent,
     TutorProfileComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule, FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule, MatCardModule, MatRippleModule, MatSelectModule, MatIconModule, MatInputModule, MatFormFieldModule, MatCheckboxModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule,
+    FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule,
+    MatCardModule, MatRippleModule, MatSelectModule, MatIconModule, MatInputModule,
+    MatFormFieldModule, MatCheckboxModule, GraphQLModule, HttpClientModule
+  ],
   providers: [TutorListService, TutorService],
   bootstrap: [AppComponent]
 })

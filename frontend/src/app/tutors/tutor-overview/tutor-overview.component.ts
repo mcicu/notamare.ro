@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TutorListService} from '../../services/tutor-list.service';
 import {ActivatedRoute, Params} from '@angular/router';
-import {Tutor} from '../../dto/tutor';
+import {SessionDurationEnum, SessionPlaceEnum, Tutor} from '../../dto/tutor';
 
 @Component({
   selector: 'app-tutor-overview',
@@ -11,6 +11,8 @@ import {Tutor} from '../../dto/tutor';
 export class TutorOverviewComponent implements OnInit {
 
   tutor: Tutor;
+  sessionDurationEnum = SessionDurationEnum;
+  sessionPlaceEnum = SessionPlaceEnum;
 
   constructor(private tutorListService: TutorListService, private route: ActivatedRoute) {
   }

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Tutor} from '../../dto/tutor';
+import {SessionDurationEnum, Tutor} from '../../dto/tutor';
 
 @Component({
   selector: 'app-tutor-card',
@@ -9,6 +9,7 @@ import {Tutor} from '../../dto/tutor';
 export class TutorCardComponent implements OnInit {
 
   @Input() tutor: Tutor;
+  sessionDurationEnum = SessionDurationEnum;
 
   constructor() {
   }

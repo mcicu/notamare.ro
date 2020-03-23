@@ -1,127 +1,40 @@
 import {Injectable} from '@angular/core';
 import {Tutor} from '../dto/tutor';
+import {Apollo} from 'apollo-angular';
+import gql from 'graphql-tag';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TutorListService {
 
-  private tutors: Tutor[] = [
-    new Tutor(
-      '1-mihai-cicu',
-      'Mihai Cicu',
-      'https://media-exp1.licdn.com/dms/image/C5603AQHxyg5s7uYblw/profile-displayphoto-shrink_200_200/0?e=1588809600&v=beta&t=PZNwfvvZOo3DcfkdylaCUyCuTDybgomUbOdqnOiOxUs',
-      ['Matematica', 'Computer Science'],
-      {price: 100, duration: 2},
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.',
-      '074 444 5444',
-      'Bucuresti - zona Grozavesti',
-      5,
-      {
-        studentLevels: ['Clasele I - IV', 'Clasele V - VIII', 'Liceu', 'Facultate'],
-        tutoringLocations: ['Online', 'La domiciliul studentului', 'La domiciliul tutorelui']
-      }),
-    new Tutor(
-      '1-mihai-cicu',
-      'Mihai Cicu',
-      'not-found',
-      ['Matematica', 'Computer Science'],
-      {price: 100, duration: 2},
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.',
-      '074 444 5444',
-      'Bucuresti - zona Grozavesti',
-      5,
-      {
-        studentLevels: ['Clasele I - IV', 'Clasele V - VIII', 'Liceu', 'Facultate'],
-        tutoringLocations: ['Online', 'La domiciliul studentului', 'La domiciliul tutorelui']
-      }),
-    new Tutor(
-      '1-mihai-cicu',
-      'Mihai Cicu',
-      'not-found',
-      ['Matematica', 'Computer Science'],
-      {price: 100, duration: 2},
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.',
-      '074 444 5444',
-      'Bucuresti - zona Grozavesti',
-      5,
-      {
-        studentLevels: ['Clasele I - IV', 'Clasele V - VIII', 'Liceu', 'Facultate'],
-        tutoringLocations: ['Online', 'La domiciliul studentului', 'La domiciliul tutorelui']
-      }),
-    new Tutor(
-      '1-mihai-cicu',
-      'Mihai Cicu',
-      'not-found',
-      ['Matematica', 'Computer Science'],
-      {price: 100, duration: 2},
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.',
-      '074 444 5444',
-      'Bucuresti - zona Grozavesti',
-      5,
-      {
-        studentLevels: ['Clasele I - IV', 'Clasele V - VIII', 'Liceu', 'Facultate'],
-        tutoringLocations: ['Online', 'La domiciliul studentului', 'La domiciliul tutorelui']
-      }),
-    new Tutor(
-      '1-mihai-cicu',
-      'Mihai Cicu',
-      'not-found',
-      ['Matematica', 'Computer Science'],
-      {price: 100, duration: 2},
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.',
-      '074 444 5444',
-      'Bucuresti - zona Grozavesti',
-      5,
-      {
-        studentLevels: ['Clasele I - IV', 'Clasele V - VIII', 'Liceu', 'Facultate'],
-        tutoringLocations: ['Online', 'La domiciliul studentului', 'La domiciliul tutorelui']
-      }),
-    new Tutor(
-      '1-mihai-cicu',
-      'Mihai Cicu',
-      'not-found',
-      ['Matematica', 'Computer Science'],
-      {price: 100, duration: 2},
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.',
-      '074 444 5444',
-      'Bucuresti - zona Grozavesti',
-      5,
-      {
-        studentLevels: ['Clasele I - IV', 'Clasele V - VIII', 'Liceu', 'Facultate'],
-        tutoringLocations: ['Online', 'La domiciliul studentului', 'La domiciliul tutorelui']
-      }),
-    new Tutor(
-      '1-mihai-cicu',
-      'Mihai Cicu',
-      'not-found',
-      ['Matematica', 'Computer Science'],
-      {price: 100, duration: 2},
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.',
-      '074 444 5444',
-      'Bucuresti - zona Grozavesti',
-      5,
-      {
-        studentLevels: ['Clasele I - IV', 'Clasele V - VIII', 'Liceu', 'Facultate'],
-        tutoringLocations: ['Online', 'La domiciliul studentului', 'La domiciliul tutorelui']
-      }),
-    new Tutor(
-      '1-mihai-cicu',
-      'Mihai Cicu',
-      'not-found',
-      ['Matematica', 'Computer Science'],
-      {price: 100, duration: 2},
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.',
-      '074 444 5444',
-      'Bucuresti - zona Grozavesti',
-      5,
-      {
-        studentLevels: ['Clasele I - IV', 'Clasele V - VIII', 'Liceu', 'Facultate'],
-        tutoringLocations: ['Online', 'La domiciliul studentului', 'La domiciliul tutorelui']
-      }),
-  ];
+  private tutors: Tutor[] = [];
 
-  constructor() {
+  constructor(private apollo: Apollo) {
+    this.apollo
+    .watchQuery({
+      query: gql`
+        {
+          tutors {
+            id
+            name
+            phoneNumber
+            description
+            location
+            image
+            sessionPreferences {
+              price
+              duration
+              places
+              subjects
+            }
+          }
+        }
+      `,
+    })
+    .valueChanges.subscribe(result => {
+      // @ts-ignore
+      this.tutors = result.data && result.data.tutors;
+      console.log(this.tutors);
+    });
   }
 
   getTutors(): Tutor[] {

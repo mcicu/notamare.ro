@@ -9,13 +9,14 @@
         <!--<mat-divider></mat-divider>-->
         <div class="tutor-session" fxLayout="row" fxLayoutGap="10px">
           <div class="tutor-session">
-            {{tutor.session.price}} RON / {{tutor.session.duration}} ore
+            {{tutor.sessionPreferences.price}} RON / {{sessionDurationEnum[tutor.sessionPreferences.duration]}}
           </div>
         </div>
       </div>
     </div>
 
-    <div class="delimited-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <div class="delimited-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between center"
+         fxLayoutGap="20px">
       <div class="tutor-call-button">
         <a [href]="'tel:' + tutor.phoneNumber" color="primary" mat-stroked-button>
           <i class="fa fa-phone"></i>
@@ -23,7 +24,8 @@
         </a>
       </div>
       <mat-chip-list>
-        <mat-chip *ngFor="let subject of tutor.subjects" color="primary" selected>{{subject}}</mat-chip>
+        <mat-chip *ngFor="let subject of tutor.sessionPreferences.subjects" color="primary"
+                  selected>{{subject}}</mat-chip>
       </mat-chip-list>
     </div>
 
@@ -33,17 +35,17 @@
 
     <div class="delimited-row" fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
       <mat-chip-list>
-        <mat-chip *ngFor="let studentLevel of tutor.preferences.studentLevels">{{studentLevel}}</mat-chip>
+        <mat-chip *ngFor="let studentLevel of tutor.sessionPreferences.studentLevels">{{studentLevel}}</mat-chip>
       </mat-chip-list>
     </div>
 
     <div class="delimited-row" fxLayout="column">
-      <div class="tutor-county"><i class="fa fa-map-marker field-marker"></i> {{tutor.county}} </div>
+      <div class="tutor-county"><i class="fa fa-map-marker field-marker"></i> {{tutor.location}} </div>
       <mat-list>
-        <mat-list-item *ngFor="let tutoringLocation of tutor.preferences.tutoringLocations"
+        <mat-list-item *ngFor="let sessionPlace of tutor.sessionPreferences.places"
                        [ngStyle]="{height: '2em'}">
           <mat-icon matListIcon>checkmark</mat-icon>
-          {{tutoringLocation}}
+          {{sessionPlaceEnum[sessionPlace]}}
         </mat-list-item>
       </mat-list>
     </div>
