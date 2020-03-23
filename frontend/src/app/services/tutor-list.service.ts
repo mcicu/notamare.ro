@@ -16,15 +16,16 @@ export class TutorListService {
           tutors {
             id
             name
+            image
             phoneNumber
             description
             location
-            image
             sessionPreferences {
               price
               duration
-              places
               subjects
+              studentLevels
+              places
             }
           }
         }

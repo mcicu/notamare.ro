@@ -12,7 +12,7 @@ export interface SessionPreferences {
   price: number;
   duration: SessionDurationEnum;
   subjects: string[];
-  studentLevels: string[];
+  studentLevels: StudentLevelEnum[];
   places: string[];
 }
 
@@ -28,4 +28,11 @@ export enum SessionPlaceEnum {
   TUTOR_PLACE = 'La domiciliul tutorelui',
   STUDENT_PLACE = 'La domiciliul studentului',
   TUTORING_CENTRE = 'La centrul de meditatii'
+}
+
+export enum StudentLevelEnum {
+  PRIMARY_SCHOOL = 'Clasele I-IV',
+  MIDDLE_SCHOOL = 'Clasele V-VIII',
+  HIGH_SCHOOL = 'Liceu',
+  FACULTY = 'Facultate'
 }

@@ -35,7 +35,9 @@
 
     <div class="delimited-row" fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="10px">
       <mat-chip-list>
-        <mat-chip *ngFor="let studentLevel of tutor.sessionPreferences.studentLevels">{{studentLevel}}</mat-chip>
+        <mat-chip *ngFor="let studentLevel of tutor.sessionPreferences.studentLevels">
+          {{studentLevelEnum[studentLevel]}}
+        </mat-chip>
       </mat-chip-list>
     </div>
 
