@@ -25,12 +25,10 @@
 
         <mat-form-field class="tutor-session-duration">
           <mat-label>Durata sedinta</mat-label>
-          <mat-select>
-            <mat-option
-              *ngFor="let sessionDuration of sessionDurationEnum | enumToMap"
-              [value]="sessionDuration.key"
-            >
-              {{sessionDuration.value}}
+          <mat-select [value]="tutor.sessionPreferences.duration">
+            <mat-option *ngFor="let sessionDurationEntry of sessionDurationEnum | enumToMap"
+                        [value]="sessionDurationEntry.key">
+              {{sessionDurationEntry.value}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -43,21 +41,21 @@
 
       <mat-form-field>
         <mat-label>Desfasure</mat-label>
-        <mat-select multiple="true">
-          <mat-option>Online</mat-option>
-          <mat-option>La domiciliul studentului</mat-option>
-          <mat-option>La domiciliul tutorelui</mat-option>
-          <mat-option>La centrul de meditatii</mat-option>
+        <mat-select [value]="tutor.sessionPreferences.places" multiple="true">
+          <mat-option *ngFor="let sessionPlaceEntry of sessionPlaceEnum | enumToMap"
+                      [value]="sessionPlaceEntry.key">
+            {{sessionPlaceEntry.value}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Nivel student</mat-label>
-        <mat-select multiple="true">
-          <mat-option>Clasele I-IV</mat-option>
-          <mat-option>Clasele V-VIII</mat-option>
-          <mat-option>Liceu</mat-option>
-          <mat-option>Facultate</mat-option>
+        <mat-select [value]="tutor.sessionPreferences.studentLevels" multiple="true">
+          <mat-option *ngFor="let studentLevelEntry of studentLevelEnum | enumToMap"
+                      [value]="studentLevelEntry.key">
+            {{studentLevelEntry.value}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
 
