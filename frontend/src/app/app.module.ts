@@ -31,6 +31,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
+import {EnumToMapPipe} from './utils/enum-to-map.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {MatButtonModule} from '@angular/material/button';
     TutorCardComponent,
     TutorsComponent,
     TutorOverviewComponent,
-    TutorProfileComponent
+    TutorProfileComponent,
+    EnumToMapPipe
   ],
   imports: [
     BrowserModule,

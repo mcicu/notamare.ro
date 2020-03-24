@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TutorService} from '../services/tutor.service';
-import {Tutor} from '../dto/tutor';
+import {SessionDurationEnum, SessionPlaceEnum, Tutor} from '../dto/tutor';
 
 @Component({
   selector: 'app-tutor-profile',
@@ -10,6 +10,8 @@ import {Tutor} from '../dto/tutor';
 export class TutorProfileComponent implements OnInit {
 
   tutor: Tutor;
+  sessionDurationEnum = SessionDurationEnum;
+  sessionPlaceEnum = SessionPlaceEnum;
 
   constructor(private tutorService: TutorService) {
   }

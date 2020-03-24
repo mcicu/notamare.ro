@@ -1,5 +1,5 @@
 <div class="main-content" fxLayout="row" fxLayoutAlign="center">
-  <div class="one-column" fxFlex="1 1" fxLayoutGap="40px" fxLayout="row" fxLayout.lt-md="column" >
+  <div class="one-column" fxFlex="1 1" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="40px">
     <div class="left-column" fxLayout="column" fxLayoutAlign="flex-start center">
       <a mat-button>
         <img [src]="tutor.image" width="150px"/>
@@ -19,24 +19,26 @@
       <div fxLayoutGap="15px">
         <mat-form-field class="tutor-session-price">
           <mat-label>Pret</mat-label>
-          <input [value]="tutor.session.price" matInput/>
+          <input [value]="tutor.sessionPreferences.price" matInput/>
           <div matSuffix>RON</div>
         </mat-form-field>
 
         <mat-form-field class="tutor-session-duration">
           <mat-label>Durata sedinta</mat-label>
           <mat-select>
-            <mat-option value="1 ora">1 ora</mat-option>
-            <mat-option value="1 ora si 30 minute">1 ora si 30 minute</mat-option>
-            <mat-option value="2 ore">2 ore</mat-option>
-            <mat-option value="Mai mult de 2 ore">Mai mult de 2 ore</mat-option>
+            <mat-option
+              *ngFor="let sessionDuration of sessionDurationEnum | enumToMap"
+              [value]="sessionDuration.key"
+            >
+              {{sessionDuration.value}}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
 
       <mat-form-field>
         <mat-label>Locatie</mat-label>
-        <input [value]="tutor.county" matInput/>
+        <input [value]="tutor.location" matInput/>
       </mat-form-field>
 
       <mat-form-field>
@@ -61,7 +63,7 @@
 
       <mat-form-field>
         <mat-label>Materii</mat-label>
-        <input [value]="tutor.subjects" matInput/>
+        <input [value]="tutor.sessionPreferences.subjects" matInput/>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
