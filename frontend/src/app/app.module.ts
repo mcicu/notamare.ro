@@ -32,6 +32,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
 import {EnumToMapPipe} from './utils/enum-to-map.pipe';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import {EnumToMapPipe} from './utils/enum-to-map.pipe';
     MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule,
     FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule,
     MatCardModule, MatRippleModule, MatSelectModule, MatIconModule, MatInputModule,
-    MatFormFieldModule, MatCheckboxModule, GraphQLModule, HttpClientModule
+    MatFormFieldModule, MatCheckboxModule, GraphQLModule, HttpClientModule, ReactiveFormsModule
   ],
   providers: [TutorListService, TutorService],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 <div class="main-content" fxLayout="row" fxLayoutAlign="center">
-  <div class="one-column" fxFlex="1 1" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="40px">
+  <form (ngSubmit)="onSubmit()" [formGroup]="tutorProfileForm"
+        class="one-column"
+        fxFlex="1 1" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="40px">
     <div class="left-column" fxLayout="column" fxLayoutAlign="flex-start center">
       <a mat-button>
         <img [src]="tutor.image" width="150px"/>
@@ -8,70 +10,73 @@
     <div class="right-column" fxFlex="1 1" fxLayout="column" fxLayoutGap="10px">
       <mat-form-field>
         <mat-label>Nume</mat-label>
-        <input [value]="tutor.name" matInput/>
+        <input formControlName="name" matInput/>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Numar de telefon</mat-label>
-        <input [value]="tutor.phoneNumber" matInput/>
+        <input formControlName="phoneNumber" matInput/>
       </mat-form-field>
-
-      <div fxLayoutGap="15px">
-        <mat-form-field class="tutor-session-price">
-          <mat-label>Pret</mat-label>
-          <input [value]="tutor.sessionPreferences.price" matInput/>
-          <div matSuffix>RON</div>
-        </mat-form-field>
-
-        <mat-form-field class="tutor-session-duration">
-          <mat-label>Durata sedinta</mat-label>
-          <mat-select [value]="tutor.sessionPreferences.duration">
-            <mat-option *ngFor="let sessionDurationEntry of sessionDurationEnum | enumToMap"
-                        [value]="sessionDurationEntry.key">
-              {{sessionDurationEntry.value}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
 
       <mat-form-field>
         <mat-label>Locatie</mat-label>
-        <input [value]="tutor.location" matInput/>
+        <input formControlName="location" matInput/>
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Desfasure</mat-label>
-        <mat-select [value]="tutor.sessionPreferences.places" multiple="true">
-          <mat-option *ngFor="let sessionPlaceEntry of sessionPlaceEnum | enumToMap"
-                      [value]="sessionPlaceEntry.key">
-            {{sessionPlaceEntry.value}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div formGroupName="sessionPreferences" fxLayout="column" fxLayoutGap="10px">
+        <div fxLayoutGap="15px">
+          <mat-form-field class="tutor-session-price">
+            <mat-label>Pret</mat-label>
+            <input formControlName="price" matInput/>
+            <div matSuffix>RON</div>
+          </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Nivel student</mat-label>
-        <mat-select [value]="tutor.sessionPreferences.studentLevels" multiple="true">
-          <mat-option *ngFor="let studentLevelEntry of studentLevelEnum | enumToMap"
-                      [value]="studentLevelEntry.key">
-            {{studentLevelEntry.value}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+          <mat-form-field class="tutor-session-duration">
+            <mat-label>Durata sedinta</mat-label>
+            <mat-select formControlName="duration">
+              <mat-option *ngFor="let sessionDurationEntry of sessionDurationEnum | enumToMap"
+                          [value]="sessionDurationEntry.key">
+                {{sessionDurationEntry.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-      <mat-form-field>
-        <mat-label>Materii</mat-label>
-        <input [value]="tutor.sessionPreferences.subjects" matInput/>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Desfasure</mat-label>
+          <mat-select formControlName="places" multiple="true">
+            <mat-option *ngFor="let sessionPlaceEntry of sessionPlaceEnum | enumToMap"
+                        [value]="sessionPlaceEntry.key">
+              {{sessionPlaceEntry.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Nivel student</mat-label>
+          <mat-select formControlName="studentLevels" multiple="true">
+            <mat-option *ngFor="let studentLevelEntry of studentLevelEnum | enumToMap"
+                        [value]="studentLevelEntry.key">
+              {{studentLevelEntry.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Materii</mat-label>
+          <input formControlName="subjects" matInput/>
+        </mat-form-field>
+      </div>
+
 
       <mat-form-field appearance="outline">
         <mat-label>Descriere</mat-label>
-        <textarea [value]="tutor.description" matInput rows="10"></textarea>
+        <textarea formControlName="description" matInput rows="10"></textarea>
       </mat-form-field>
 
       <div fxFlex="1">
         <button color="primary" mat-flat-button>Salveaza modificarile</button>
       </div>
     </div>
-  </div>
+  </form>
 </div>
