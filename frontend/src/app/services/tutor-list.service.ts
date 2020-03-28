@@ -1,53 +1,35 @@
 import {Injectable} from '@angular/core';
 import {Tutor} from '../dto/tutor';
-import {Apollo} from 'apollo-angular';
-import gql from 'graphql-tag';
+import {TutorsQuery} from '../graphql/tutors.query';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class TutorListService {
 
-  private tutors: Tutor[] = [];
+  private tutors: Observable<Tutor[]>;
 
-  constructor(private apollo: Apollo) {
-    this.apollo
-    .watchQuery({
-      query: gql`
-        {
-          tutors {
-            id
-            name
-            image
-            phoneNumber
-            description
-            location
-            sessionPreferences {
-              price
-              duration
-              subjects
-              studentLevels
-              places
-            }
+  constructor(private tutorsQuery: TutorsQuery) {
+    this.tutors = tutorsQuery.fetch()
+      .pipe(
+        map(result => result.data.tutors)
+      );
+  }
+
+  getTutors(): Observable<Tutor[]> {
+    console.log(this.tutors);
+    return this.tutors;
+  }
+
+  getTutor(tutorId: string): Promise<Tutor> {
+    return this.tutors.toPromise()
+      .then(tutors => {
+        for (const tutor of tutors) {
+          if (tutor.id === tutorId) {
+            return tutor;
           }
         }
-      `,
-    })
-    .valueChanges.subscribe(result => {
-      // @ts-ignore
-      this.tutors = result.data && result.data.tutors;
-      console.log(this.tutors);
-    });
-  }
-
-  getTutors(): Tutor[] {
-    return this.tutors.slice();
-  }
-
-  getTutor(tutorId: string): Tutor {
-    for (const tutor of this.tutors) {
-      if (tutorId === tutor.id) {
-        return tutor;
-      }
-    }
-    return null;
+        return null;
+      });
   }
 }

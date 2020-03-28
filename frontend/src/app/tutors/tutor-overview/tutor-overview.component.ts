@@ -20,9 +20,8 @@ export class TutorOverviewComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      console.log(params);
       if (null !== params['tutor-id']) {
-        this.tutor = this.tutorListService.getTutor(params['tutor-id']);
+        this.tutorListService.getTutor(params['tutor-id']).then(value => this.tutor = value);
       } else {
         this.tutor = null;
       }

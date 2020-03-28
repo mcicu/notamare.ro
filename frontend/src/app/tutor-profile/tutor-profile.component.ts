@@ -10,37 +10,41 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class TutorProfileComponent implements OnInit {
 
-  tutor: Tutor;
+  tutorProfileForm: FormGroup;
+
   sessionDurationEnum = SessionDurationEnum;
   sessionPlaceEnum = SessionPlaceEnum;
   studentLevelEnum = StudentLevelEnum;
-
-  tutorProfileForm: FormGroup;
 
   constructor(private tutorService: TutorService) {
   }
 
   ngOnInit() {
-    this.tutor = this.tutorService.getTutorProfile();
-
-    this.tutorProfileForm = new FormGroup({
-      name: new FormControl(this.tutor.name),
-      image: new FormControl(null),
-      phoneNumber: new FormControl(this.tutor.phoneNumber),
-      description: new FormControl(this.tutor.description),
-      location: new FormControl(this.tutor.location),
-      sessionPreferences: new FormGroup({
-        price: new FormControl(this.tutor.sessionPreferences.price),
-        duration: new FormControl(this.tutor.sessionPreferences.duration),
-        subjects: new FormControl(this.tutor.sessionPreferences.subjects),
-        studentLevels: new FormControl(this.tutor.sessionPreferences.studentLevels),
-        places: new FormControl(this.tutor.sessionPreferences.places)
-      })
-    });
+    this.tutorService.getTutorProfile()
+      .then(value => {
+        this.tutorProfileForm = this.buildTutorProfileForm(value);
+      });
   }
 
   onSubmit() {
     console.log(this.tutorProfileForm.value);
+  }
+
+  buildTutorProfileForm(tutor: Tutor): FormGroup {
+    return new FormGroup({
+      name: new FormControl(tutor.name),
+      image: new FormControl(null),
+      phoneNumber: new FormControl(tutor.phoneNumber),
+      description: new FormControl(tutor.description),
+      location: new FormControl(tutor.location),
+      sessionPreferences: new FormGroup({
+        price: new FormControl(tutor.sessionPreferences.price),
+        duration: new FormControl(tutor.sessionPreferences.duration),
+        subjects: new FormControl(tutor.sessionPreferences.subjects),
+        studentLevels: new FormControl(tutor.sessionPreferences.studentLevels),
+        places: new FormControl(tutor.sessionPreferences.places)
+      })
+    });
   }
 
 }

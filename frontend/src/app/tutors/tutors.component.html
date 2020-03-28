@@ -18,7 +18,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <app-tutor-card *ngFor="let tutor of tutorListService.getTutors()" [tutor]="tutor"></app-tutor-card>
+    <app-tutor-card *ngFor="let tutor of tutors" [tutor]="tutor"></app-tutor-card>
   </div>
   <div class="right-column sticky-top" fxFlex="1 1 45">
     <router-outlet></router-outlet>

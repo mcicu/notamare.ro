@@ -10,7 +10,7 @@ export class TutorService {
   constructor(private tutorListService: TutorListService) {
   }
 
-  getTutorProfile(): Tutor {
-    return this.tutorListService.getTutors()[0];
+  getTutorProfile(): Promise<Tutor> {
+    return this.tutorListService.getTutor('5e6c9bacfaa87b0a515c56ac');
   }
 }
