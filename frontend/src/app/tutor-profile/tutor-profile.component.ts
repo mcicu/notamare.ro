@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {TutorService} from '../services/tutor.service';
 import {SessionDurationEnum, SessionPlaceEnum, StudentLevelEnum, Tutor} from '../dto/tutor';
 import {FormControl, FormGroup} from '@angular/forms';
+import {TutorProfileService} from '../services/tutor-profile.service';
+import {TutorInput} from '../dto/TutorInput';
 
 @Component({
   selector: 'app-tutor-profile',
@@ -11,23 +12,24 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class TutorProfileComponent implements OnInit {
 
   tutorProfileForm: FormGroup;
-
   sessionDurationEnum = SessionDurationEnum;
   sessionPlaceEnum = SessionPlaceEnum;
   studentLevelEnum = StudentLevelEnum;
+  private tutorId: string;
 
-  constructor(private tutorService: TutorService) {
+  constructor(private tutorProfileService: TutorProfileService) {
   }
 
   ngOnInit() {
-    this.tutorService.getTutorProfile()
+    this.tutorProfileService.getTutorProfile()
       .then(value => {
+        this.tutorId = value.id;
         this.tutorProfileForm = this.buildTutorProfileForm(value);
       });
   }
 
   onSubmit() {
-    console.log(this.tutorProfileForm.value);
+    this.tutorProfileService.submitUpdate(this.tutorId, this.tutorProfileForm.value as TutorInput);
   }
 
   buildTutorProfileForm(tutor: Tutor): FormGroup {

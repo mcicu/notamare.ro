@@ -10,7 +10,7 @@ interface Response {
 @Injectable({
   providedIn: 'root',
 })
-export class TutorsQuery extends Query<Response> {
+export class TutorsGQL extends Query<Response> {
   document = gql`
     query tutors {
       tutors {

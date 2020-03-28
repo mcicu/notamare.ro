@@ -1,23 +1,23 @@
 import {Injectable} from '@angular/core';
 import {Tutor} from '../dto/tutor';
-import {TutorsQuery} from '../graphql/tutors.query';
+import {TutorsGQL} from '../graphql/tutors.query';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
 @Injectable()
 export class TutorListService {
 
-  private tutors: Observable<Tutor[]>;
+  private readonly tutors: Observable<Tutor[]>;
 
-  constructor(private tutorsQuery: TutorsQuery) {
-    this.tutors = tutorsQuery.fetch()
+  constructor(private tutorsGQL: TutorsGQL) {
+    // TODO watch().valueChanges doesn't seem to work with toPromise()
+    this.tutors = tutorsGQL.fetch()
       .pipe(
         map(result => result.data.tutors)
       );
   }
 
   getTutors(): Observable<Tutor[]> {
-    console.log(this.tutors);
     return this.tutors;
   }
 
