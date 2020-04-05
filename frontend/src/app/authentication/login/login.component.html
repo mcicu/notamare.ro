@@ -1,0 +1,20 @@
+<div class="main-content">
+  <div class="one-column" fxFlex="1 1" fxLayout="column">
+    <h2>Autentificare</h2>
+    <form [formGroup]="loginFormGroup" fxLayout="column">
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input formControlName="email" matInput/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput type="password"/>
+      </mat-form-field>
+
+      <div fxFlex="" fxFlexAlign="end">
+        <button mat-flat-button color="primary">Trimite</button>
+      </div>
+    </form>
+  </div>
+</div>

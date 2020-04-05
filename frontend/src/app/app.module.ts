@@ -33,6 +33,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {EnumToMapPipe} from './utils/enum-to-map.pipe';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TutorProfileService} from './services/tutor-profile.service';
+import { LoginComponent } from './authentication/login/login.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {TutorProfileService} from './services/tutor-profile.service';
     TutorsComponent,
     TutorOverviewComponent,
     TutorProfileComponent,
+    LoginComponent,
     EnumToMapPipe
   ],
   imports: [
