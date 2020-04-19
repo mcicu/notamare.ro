@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginFormGroup: FormGroup;
 
-  constructor() {
+  constructor(private httpClient: HttpClient, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -20,4 +22,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  onSubmit() {
+    this.httpClient.post(
+      '/backend/login',
+      this.loginFormGroup.value,
+      {responseType: 'text'}
+    ).subscribe(
+      response => {
+        localStorage.setItem('jwt', response);
+        this.router.navigate(['profile']);
+      },
+      error => {
+        alert('Failed to login, please retry');
+      }
+    );
+  }
 }
