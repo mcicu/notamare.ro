@@ -3,8 +3,11 @@
     "target": "http://0.0.0.0:8080",
     "secure": false
   },
-
   "/backend/login": {
+    "target": "http://0.0.0.0:8080",
+    "secure": false
+  },
+  "/backend/tutors/current": {
     "target": "http://0.0.0.0:8080",
     "secure": false
   }

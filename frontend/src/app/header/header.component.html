@@ -5,9 +5,15 @@
   </div>
 
   <div fxFlex.gt-sm="1 1 40" fxHide.lt-md="true" fxLayoutAlign="end">
-    <a [routerLink]="['/']" mat-raised-button>Posteaza anunt</a>
-    <a [routerLink]="['/login']" mat-button>Autentificare</a>
-    <a [routerLink]="['/profile']" mat-button>Profilul meu</a>
+
+    <ng-template [ngIf]="!authenticationManager.isAuthenticated()">
+      <a [routerLink]="['/']" mat-raised-button>Posteaza anunt</a>
+      <a [routerLink]="['/login']" mat-button>Autentificare</a>
+    </ng-template>
+
+    <ng-template [ngIf]="authenticationManager.isAuthenticated()">
+      <a [routerLink]="['/profile']" mat-button>Profilul meu</a>
+    </ng-template>
   </div>
 
   <div fxHide="true" fxShow.lt-md="true">

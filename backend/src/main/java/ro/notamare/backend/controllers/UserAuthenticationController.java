@@ -1,35 +1,27 @@
 package ro.notamare.backend.controllers;
 
 import lombok.AllArgsConstructor;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ro.notamare.backend._security.JwtHandler;
-import ro.notamare.backend.dtos.UserDTO;
-import ro.notamare.backend.services.UserRegistrationService;
+import ro.notamare.backend.dtos.AuthenticationInput;
+import ro.notamare.backend.dtos.AuthenticationOutput;
+import ro.notamare.backend.dtos.RegistrationInput;
+import ro.notamare.backend.services.AuthManagementService;
 
 @RestController
 @AllArgsConstructor
 public class UserAuthenticationController {
 
-    private final AuthenticationManager authenticationManager;
-    private final UserRegistrationService userRegistrationService;
-    private final JwtHandler jwtHandler;
+    private final AuthManagementService authManagementService;
 
     @PostMapping(path = "/register", consumes = "application/json")
-    public String register(@RequestBody UserDTO userDTO) {
-        return userRegistrationService.registerUser(userDTO);
+    public String register(@RequestBody RegistrationInput registrationInput) {
+        return authManagementService.registerUser(registrationInput);
     }
 
     @PostMapping(path = "/login", consumes = "application/json", produces = "application/json")
-    public String login(@RequestBody UserDTO userDTO) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword())
-        );
-
-        return jwtHandler.create(userDTO.getEmail());
+    public AuthenticationOutput login(@RequestBody AuthenticationInput input) {
+        return authManagementService.loginUser(input);
     }
 }

@@ -1,3 +1,4 @@
+
 .main-content {
   display: flex;
   justify-content: center;
@@ -12,3 +13,4 @@
   max-width: 500px;
   box-sizing: border-box;
 }
+

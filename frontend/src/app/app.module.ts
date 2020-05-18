@@ -32,8 +32,10 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
 import {EnumToMapPipe} from './utils/enum-to-map.pipe';
 import {ReactiveFormsModule} from '@angular/forms';
-import {TutorProfileService} from './services/tutor-profile.service';
-import { LoginComponent } from './authentication/login/login.component';
+import {AuthenticatedTutorService} from './services/authenticated-tutor.service';
+import {LoginComponent} from './authentication/login/login.component';
+import {AuthenticationManager} from './services/authentication-manager.service';
+import {JWTConfigurerModule} from './jwt-configurer.module';
 
 @NgModule({
   declarations: [
@@ -53,9 +55,10 @@ import { LoginComponent } from './authentication/login/login.component';
     MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule,
     FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule,
     MatCardModule, MatRippleModule, MatSelectModule, MatIconModule, MatInputModule,
-    MatFormFieldModule, MatCheckboxModule, GraphQLModule, HttpClientModule, ReactiveFormsModule
+    MatFormFieldModule, MatCheckboxModule, GraphQLModule, HttpClientModule, ReactiveFormsModule,
+    JWTConfigurerModule
   ],
-  providers: [TutorListService, TutorProfileService],
+  providers: [TutorListService, AuthenticatedTutorService, AuthenticationManager],
   bootstrap: [AppComponent]
 })
 export class AppModule {

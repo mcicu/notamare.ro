@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SessionDurationEnum, SessionPlaceEnum, StudentLevelEnum, Tutor} from '../dto/tutor';
 import {FormControl, FormGroup} from '@angular/forms';
-import {TutorProfileService} from '../services/tutor-profile.service';
+import {AuthenticatedTutorService} from '../services/authenticated-tutor.service';
 import {TutorInput} from '../dto/TutorInput';
 
 @Component({
@@ -17,7 +17,7 @@ export class TutorProfileComponent implements OnInit {
   studentLevelEnum = StudentLevelEnum;
   private tutorId: string;
 
-  constructor(private tutorProfileService: TutorProfileService) {
+  constructor(private tutorProfileService: AuthenticatedTutorService) {
   }
 
   ngOnInit() {
