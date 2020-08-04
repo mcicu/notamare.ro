@@ -12,6 +12,7 @@ import ro.notamare.backend._security.UserPrincipal;
 import ro.notamare.backend.dtos.AuthenticationInput;
 import ro.notamare.backend.dtos.AuthenticationOutput;
 import ro.notamare.backend.dtos.RegistrationInput;
+import ro.notamare.backend.dtos.RegistrationOutput;
 import ro.notamare.backend.entities.Tutor;
 import ro.notamare.backend.entities.User;
 import ro.notamare.backend.repositories.UserRepository;
@@ -28,15 +29,19 @@ public class AuthManagementService {
     private final AuthenticationManager authenticationManager;
     private final JwtHandler jwtHandler;
 
-    public String registerUser(RegistrationInput registrationInput) {
-        checkAccountDoesNotExist(registrationInput.getEmail());
+    public RegistrationOutput registerUser(RegistrationInput input) {
+        checkAccountDoesNotExist(input.getEmail());
 
         User user = new User();
-        user.setEmail(registrationInput.getEmail());
-        user.setPassword(bCryptPasswordEncoder.encode(registrationInput.getPassword()));
+        user.setEmail(input.getEmail());
+        user.setPassword(bCryptPasswordEncoder.encode(input.getPassword()));
         userRepository.insert(user);
 
-        return user.getEmail();
+        String jwt = jwtHandler.create(input.getEmail());
+        return RegistrationOutput.builder()
+                .jwt(jwt)
+                .email(input.getEmail())
+                .build();
     }
 
     public AuthenticationOutput loginUser(AuthenticationInput input) {

@@ -15,4 +15,9 @@ export class AuthenticationManager {
   setAuthenticated(authenticated: boolean): void {
     this.authenticated = authenticated;
   }
+
+  logout() {
+    localStorage.clear();
+    this.authenticated = false;
+  }
 }

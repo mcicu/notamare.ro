@@ -1,4 +1,4 @@
-export class AuthenticationOutput {
+export interface AuthenticationOutput {
   jwt: string;
   email: string;
   name: string;

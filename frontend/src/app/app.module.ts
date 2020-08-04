@@ -36,6 +36,8 @@ import {AuthenticatedTutorService} from './services/authenticated-tutor.service'
 import {LoginComponent} from './authentication/login/login.component';
 import {AuthenticationManager} from './services/authentication-manager.service';
 import {JWTConfigurerModule} from './jwt-configurer.module';
+import { RegisterComponent } from './authentication/register/register.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -46,18 +48,19 @@ import {JWTConfigurerModule} from './jwt-configurer.module';
     TutorOverviewComponent,
     TutorProfileComponent,
     LoginComponent,
-    EnumToMapPipe
+    EnumToMapPipe,
+    RegisterComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule,
-    FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule,
-    MatCardModule, MatRippleModule, MatSelectModule, MatIconModule, MatInputModule,
-    MatFormFieldModule, MatCheckboxModule, GraphQLModule, HttpClientModule, ReactiveFormsModule,
-    JWTConfigurerModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule,
+        FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule,
+        MatCardModule, MatRippleModule, MatSelectModule, MatIconModule, MatInputModule,
+        MatFormFieldModule, MatCheckboxModule, GraphQLModule, HttpClientModule, ReactiveFormsModule,
+        JWTConfigurerModule, MatProgressSpinnerModule
+    ],
   providers: [TutorListService, AuthenticatedTutorService, AuthenticationManager],
   bootstrap: [AppComponent]
 })

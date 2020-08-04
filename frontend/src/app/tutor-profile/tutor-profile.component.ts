@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SessionDurationEnum, SessionPlaceEnum, StudentLevelEnum, Tutor} from '../dto/tutor';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthenticatedTutorService} from '../services/authenticated-tutor.service';
-import {TutorInput} from '../dto/TutorInput';
+import {TutorInput} from '../dto/tutor-input';
 
 @Component({
   selector: 'app-tutor-profile',

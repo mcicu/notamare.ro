@@ -1,12 +1,21 @@
 import {Injectable} from '@angular/core';
 import {Tutor} from '../dto/tutor';
-import {TutorInput} from '../dto/TutorInput';
+import {TutorInput} from '../dto/tutor-input';
 import {HttpClient} from '@angular/common/http';
+import {AuthenticationManager} from './authentication-manager.service';
+import {UpdateTutorGQL} from '../graphql/update-tutor.mutation';
 
 @Injectable()
 export class AuthenticatedTutorService {
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private authenticationManager: AuthenticationManager,
+    private updateTutorGQL: UpdateTutorGQL) {
+  }
+
+  getTutorName(): string {
+    return localStorage.getItem('name');
   }
 
   getTutorProfile(): Promise<Tutor> {
@@ -14,11 +23,15 @@ export class AuthenticatedTutorService {
   }
 
   submitUpdate(id: string, tutor: TutorInput) {
-    /*this.updateTutorGQL.mutate({
+    this.updateTutorGQL.mutate({
       id,
       tutor
     }).subscribe(value => {
       console.log('Updated ' + value);
-    });*/
+    });
+  }
+
+  logout() {
+    this.authenticationManager.logout();
   }
 }

@@ -4,6 +4,7 @@ import {TutorsComponent} from './tutors/tutors.component';
 import {TutorOverviewComponent} from './tutors/tutor-overview/tutor-overview.component';
 import {TutorProfileComponent} from './tutor-profile/tutor-profile.component';
 import {LoginComponent} from './authentication/login/login.component';
+import {RegisterComponent} from './authentication/register/register.component';
 
 
 const routes: Routes = [
@@ -13,12 +14,9 @@ const routes: Routes = [
       {path: 'overview/:tutor-id', component: TutorOverviewComponent}
     ]
   },
-  {
-    path: 'login', component: LoginComponent
-  },
-  {
-    path: 'profile', component: TutorProfileComponent
-  }
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'profile', component: TutorProfileComponent}
 ];
 
 @NgModule({
