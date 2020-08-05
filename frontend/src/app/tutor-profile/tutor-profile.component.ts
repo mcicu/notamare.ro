@@ -3,6 +3,7 @@ import {SessionDurationEnum, SessionPlaceEnum, StudentLevelEnum, Tutor} from '..
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthenticatedTutorService} from '../services/authenticated-tutor.service';
 import {TutorInput} from '../dto/tutor-input';
+import {FormSaveStateEnum} from '../enums/form-save-state.enum';
 
 @Component({
   selector: 'app-tutor-profile',
@@ -12,16 +13,18 @@ import {TutorInput} from '../dto/tutor-input';
 export class TutorProfileComponent implements OnInit {
 
   tutorProfileForm: FormGroup;
+  tutorProfileFormSaveState = FormSaveStateEnum.SAVED;
+  formSaveStateEnum = FormSaveStateEnum;
   sessionDurationEnum = SessionDurationEnum;
   sessionPlaceEnum = SessionPlaceEnum;
   studentLevelEnum = StudentLevelEnum;
   private tutorId: string;
 
-  constructor(private tutorProfileService: AuthenticatedTutorService) {
+  constructor(private authenticatedTutorService: AuthenticatedTutorService) {
   }
 
   ngOnInit() {
-    this.tutorProfileService.getTutorProfile()
+    this.authenticatedTutorService.getTutorProfile()
       .then(value => {
         this.tutorId = value.id;
         this.tutorProfileForm = this.buildTutorProfileForm(value);
@@ -29,7 +32,15 @@ export class TutorProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    this.tutorProfileService.submitUpdate(this.tutorId, this.tutorProfileForm.value as TutorInput);
+    this.tutorProfileFormSaveState = FormSaveStateEnum.SAVING;
+    this.authenticatedTutorService.submitUpdate(this.tutorId, this.tutorProfileForm.value as TutorInput).then(
+      () => {
+        this.tutorProfileFormSaveState = FormSaveStateEnum.JUST_SAVED;
+        setTimeout(() => {
+          this.resetFormSaveState();
+        }, 2000);
+      }
+    );
   }
 
   buildTutorProfileForm(tutor: Tutor): FormGroup {
@@ -49,4 +60,9 @@ export class TutorProfileComponent implements OnInit {
     });
   }
 
+  resetFormSaveState() {
+    if (this.tutorProfileFormSaveState === FormSaveStateEnum.JUST_SAVED) {
+      this.tutorProfileFormSaveState = FormSaveStateEnum.SAVED;
+    }
+  }
 }

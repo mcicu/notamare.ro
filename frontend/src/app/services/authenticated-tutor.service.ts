@@ -22,12 +22,13 @@ export class AuthenticatedTutorService {
     return this.http.get<Tutor>('/backend/tutors/current').toPromise();
   }
 
-  submitUpdate(id: string, tutor: TutorInput) {
-    this.updateTutorGQL.mutate({
-      id,
-      tutor
-    }).subscribe(value => {
-      console.log('Updated ' + value);
+  submitUpdate(id: string, tutor: TutorInput): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      this.updateTutorGQL.mutate({id, tutor}).subscribe(next => {
+        if (next.errors == null) {
+          resolve('SAVED');
+        }
+      }, reject);
     });
   }
 
