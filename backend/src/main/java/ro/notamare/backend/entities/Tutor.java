@@ -7,6 +7,7 @@ import ro.notamare.backend.enums.SessionDuration;
 import ro.notamare.backend.enums.SessionPlace;
 import ro.notamare.backend.enums.StudentLevel;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Document(collection = "tutors")
@@ -20,14 +21,15 @@ public class Tutor {
     private String phoneNumber;
     private String description;
     private String location;
-    private SessionPreferences sessionPreferences;
+    private Boolean visible = false;
+    private SessionPreferences sessionPreferences = new SessionPreferences();
 
     @Data
     public static class SessionPreferences {
-        private Double price;
-        private SessionDuration duration;
-        private List<String> subjects;
-        private List<StudentLevel> studentLevels;
-        private List<SessionPlace> places;
+        private Double price = 100d;
+        private SessionDuration duration = SessionDuration.TWO_HOURS;
+        private List<String> subjects = new LinkedList<>();
+        private List<StudentLevel> studentLevels = new LinkedList<>();
+        private List<SessionPlace> places = new LinkedList<>();
     }
 }

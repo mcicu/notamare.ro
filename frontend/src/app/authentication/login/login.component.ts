@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {AuthenticationManager} from '../../services/authentication-manager.service';
 import {AuthenticationOutput} from '../../dto/authentication-output';
+import {ExceptionOutput} from '../../dto/exception-output';
 
 @Component({
   selector: 'app-login',
@@ -40,7 +41,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['profile']);
       },
       error => {
-        alert('Failed to login, please retry');
+        const exception: ExceptionOutput = error.error as ExceptionOutput;
+        alert(exception.message);
       }
     );
   }

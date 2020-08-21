@@ -75,6 +75,10 @@
         <textarea formControlName="description" matInput rows="10"></textarea>
       </mat-form-field>
 
+      <mat-slide-toggle formControlName="visible" #toggleVisibility>
+        {{toggleVisibility.checked ? 'Doresc' : 'Nu doresc'}} ca profilul meu sa apara pe pagina de cautare
+      </mat-slide-toggle>
+
       <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
         <button [disabled]="tutorProfileFormSaveState === formSaveStateEnum.SAVING" color="primary" mat-flat-button>
           Salveaza modificarile

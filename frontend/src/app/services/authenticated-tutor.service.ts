@@ -3,15 +3,13 @@ import {Tutor} from '../dto/tutor';
 import {TutorInput} from '../dto/tutor-input';
 import {HttpClient} from '@angular/common/http';
 import {AuthenticationManager} from './authentication-manager.service';
-import {UpdateTutorGQL} from '../graphql/update-tutor.mutation';
 
 @Injectable()
 export class AuthenticatedTutorService {
 
   constructor(
     private http: HttpClient,
-    private authenticationManager: AuthenticationManager,
-    private updateTutorGQL: UpdateTutorGQL) {
+    private authenticationManager: AuthenticationManager) {
   }
 
   getTutorName(): string {
@@ -24,10 +22,8 @@ export class AuthenticatedTutorService {
 
   submitUpdate(id: string, tutor: TutorInput): Promise<string> {
     return new Promise<string>((resolve, reject) => {
-      this.updateTutorGQL.mutate({id, tutor}).subscribe(next => {
-        if (next.errors == null) {
-          resolve('SAVED');
-        }
+      this.http.put('/backend/tutors/' + id, tutor).subscribe(next => {
+        resolve('SAVED');
       }, reject);
     });
   }

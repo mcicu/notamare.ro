@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {AuthenticationManager} from '../../services/authentication-manager.service';
 import {RegistrationOutput} from '../../dto/registration-output';
+import {ExceptionOutput} from '../../dto/exception-output';
 
 @Component({
   selector: 'app-register',
@@ -40,7 +41,8 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['profile']);
       },
       error => {
-        alert('Failed to register, please retry');
+        const exception: ExceptionOutput = error.error as ExceptionOutput;
+        alert(exception.message);
       }
     );
   }

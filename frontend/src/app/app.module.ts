@@ -12,7 +12,6 @@ import {TutorListService} from './services/tutor-list.service';
 import {TutorsComponent} from './tutors/tutors.component';
 import {TutorOverviewComponent} from './tutors/tutor-overview/tutor-overview.component';
 import {TutorProfileComponent} from './tutor-profile/tutor-profile.component';
-import {GraphQLModule} from './graphql.module';
 import {HttpClientModule} from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -38,6 +37,7 @@ import {AuthenticationManager} from './services/authentication-manager.service';
 import {JWTConfigurerModule} from './jwt-configurer.module';
 import { RegisterComponent } from './authentication/register/register.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -58,8 +58,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule,
         FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule,
         MatCardModule, MatRippleModule, MatSelectModule, MatIconModule, MatInputModule,
-        MatFormFieldModule, MatCheckboxModule, GraphQLModule, HttpClientModule, ReactiveFormsModule,
-        JWTConfigurerModule, MatProgressSpinnerModule
+        MatFormFieldModule, MatCheckboxModule, HttpClientModule, ReactiveFormsModule,
+        JWTConfigurerModule, MatProgressSpinnerModule, MatButtonToggleModule
     ],
   providers: [TutorListService, AuthenticatedTutorService, AuthenticationManager],
   bootstrap: [AppComponent]

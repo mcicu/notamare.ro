@@ -50,6 +50,7 @@ export class TutorProfileComponent implements OnInit {
       phoneNumber: new FormControl(tutor.phoneNumber),
       description: new FormControl(tutor.description),
       location: new FormControl(tutor.location),
+      visible: new FormControl(tutor.visible),
       sessionPreferences: new FormGroup({
         price: new FormControl(tutor.sessionPreferences.price),
         duration: new FormControl(tutor.sessionPreferences.duration),

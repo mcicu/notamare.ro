@@ -15,6 +15,7 @@ import ro.notamare.backend.dtos.RegistrationInput;
 import ro.notamare.backend.dtos.RegistrationOutput;
 import ro.notamare.backend.entities.Tutor;
 import ro.notamare.backend.entities.User;
+import ro.notamare.backend.exceptions.BusinessException;
 import ro.notamare.backend.repositories.UserRepository;
 
 import java.util.Optional;
@@ -35,6 +36,7 @@ public class AuthManagementService {
         User user = new User();
         user.setEmail(input.getEmail());
         user.setPassword(bCryptPasswordEncoder.encode(input.getPassword()));
+        user.setTutorId(tutorService.createEmptyTutor());
         userRepository.insert(user);
 
         String jwt = jwtHandler.create(input.getEmail());
@@ -65,7 +67,7 @@ public class AuthManagementService {
     private void checkAccountDoesNotExist(String email) {
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isPresent()) {
-            throw new RuntimeException("Exista deja un cont pentru adresa de email specificata");
+            throw new BusinessException("Exista deja un cont pentru adresa de email specificata");
         }
     }
 }

@@ -5,6 +5,7 @@ export interface Tutor {
   phoneNumber: string;
   description: string;
   location: string;
+  visible: boolean;
   sessionPreferences: SessionPreferences;
 }
 

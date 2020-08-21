@@ -10,8 +10,8 @@ import {AuthenticatedTutorService} from '../services/authenticated-tutor.service
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private authenticationManager: AuthenticationManager,
-    private authenticatedTutorService: AuthenticatedTutorService) {
+    public authenticationManager: AuthenticationManager,
+    public authenticatedTutorService: AuthenticatedTutorService) {
   }
 
   ngOnInit() {

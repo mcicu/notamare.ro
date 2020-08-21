@@ -29,8 +29,6 @@
     "apollo-client": "^2.6.10",
     "apollo-link": "^1.2.14",
     "font-awesome": "^4.7.0",
-    "graphql": "^15.3.0",
-    "graphql-tag": "^2.11.0",
     "rxjs": "^6.6.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

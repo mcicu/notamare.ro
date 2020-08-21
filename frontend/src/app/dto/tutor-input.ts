@@ -6,5 +6,6 @@ export interface TutorInput {
   phoneNumber: string;
   description: string;
   location: string;
+  visible: boolean;
   sessionPreferences: SessionPreferences;
 }

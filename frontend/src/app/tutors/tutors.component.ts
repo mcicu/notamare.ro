@@ -17,5 +17,4 @@ export class TutorsComponent implements OnInit {
   ngOnInit() {
     this.tutorListService.getTutors().subscribe(value => this.tutors = value);
   }
-
 }
