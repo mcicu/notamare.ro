@@ -4,6 +4,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {AuthenticatedTutorService} from '../services/authenticated-tutor.service';
 import {TutorInput} from '../dto/tutor-input';
 import {FormSaveStateEnum} from '../enums/form-save-state.enum';
+import {EnumToMapPipe} from '../utils/enum-to-map.pipe';
 
 @Component({
   selector: 'app-tutor-profile',
@@ -19,6 +20,7 @@ export class TutorProfileComponent implements OnInit {
   sessionPlaceEnum = SessionPlaceEnum;
   studentLevelEnum = StudentLevelEnum;
   private tutorId: string;
+  private enumToMapPipe = new EnumToMapPipe();
 
   constructor(private authenticatedTutorService: AuthenticatedTutorService) {
   }
@@ -29,18 +31,6 @@ export class TutorProfileComponent implements OnInit {
         this.tutorId = value.id;
         this.tutorProfileForm = this.buildTutorProfileForm(value);
       });
-  }
-
-  onSubmit() {
-    this.tutorProfileFormSaveState = FormSaveStateEnum.SAVING;
-    this.authenticatedTutorService.submitUpdate(this.tutorProfileForm.value as TutorInput).then(
-      () => {
-        this.tutorProfileFormSaveState = FormSaveStateEnum.JUST_SAVED;
-        setTimeout(() => {
-          this.resetFormSaveState();
-        }, 2000);
-      }
-    );
   }
 
   buildTutorProfileForm(tutor: Tutor): FormGroup {
@@ -54,16 +44,37 @@ export class TutorProfileComponent implements OnInit {
       sessionPreferences: new FormGroup({
         price: new FormControl(tutor.sessionPreferences.price),
         duration: new FormControl(tutor.sessionPreferences.duration),
-        subjects: new FormControl(tutor.sessionPreferences.subjects),
+        subjects: new FormControl(tutor.sessionPreferences.subjects.join(', ')),
         studentLevels: new FormControl(tutor.sessionPreferences.studentLevels),
         places: new FormControl(tutor.sessionPreferences.places)
       })
     });
   }
 
-  resetFormSaveState() {
+  onSubmit() {
+    this.tutorProfileFormSaveState = FormSaveStateEnum.SAVING;
+    const tutorInput = this.parseTutorProfileFormAndReturnTutorInput();
+
+    this.authenticatedTutorService.submitUpdate(tutorInput).then(
+      () => {
+        this.tutorProfileFormSaveState = FormSaveStateEnum.JUST_SAVED;
+        setTimeout(() => {
+          this.resetFormSaveState();
+        }, 2000);
+      }
+    );
+  }
+
+  private resetFormSaveState() {
     if (this.tutorProfileFormSaveState === FormSaveStateEnum.JUST_SAVED) {
       this.tutorProfileFormSaveState = FormSaveStateEnum.SAVED;
     }
+  }
+
+  private parseTutorProfileFormAndReturnTutorInput(): TutorInput {
+    const tutorInput = this.tutorProfileForm.value as TutorInput;
+    const sessionPreferencesSubjects = this.tutorProfileForm.get('sessionPreferences.subjects').value as string;
+    tutorInput.sessionPreferences.subjects = sessionPreferencesSubjects.split(/[,;]/).map(e => e.trim()).filter(e => e !== '');
+    return tutorInput;
   }
 }

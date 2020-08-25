@@ -5,7 +5,7 @@
 
   <mat-card-content fxFlex="1 1 100">
     <h2>{{tutor.name}}</h2>
-    <h4>{{tutor.sessionPreferences.subjects}}</h4>
+    <h4>{{tutor.sessionPreferences.subjects.join(", ")}}</h4>
     <div>
       {{tutor.description}}
     </div>
