@@ -20,9 +20,9 @@ export class AuthenticatedTutorService {
     return this.http.get<Tutor>('/backend/tutors/current').toPromise();
   }
 
-  submitUpdate(id: string, tutor: TutorInput): Promise<string> {
+  submitUpdate(tutor: TutorInput): Promise<string> {
     return new Promise<string>((resolve, reject) => {
-      this.http.put('/backend/tutors/' + id, tutor).subscribe(next => {
+      this.http.put('/backend/tutors/current', tutor).subscribe(next => {
         resolve('SAVED');
       }, reject);
     });

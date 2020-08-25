@@ -1,7 +1,9 @@
 package ro.notamare.backend.controllers;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ro.notamare.backend.dtos.TutorDTO;
 import ro.notamare.backend.services.TutorService;
 
@@ -17,10 +19,5 @@ public class TutorController {
     @GetMapping(produces = "application/json")
     public List<TutorDTO> getTutors() {
         return tutorService.getTutorList();
-    }
-
-    @PutMapping(path = "/{tutorId}", consumes = "application/json", produces = "application/json")
-    public TutorDTO updateTutor(@PathVariable("tutorId") String tutorId, @RequestBody TutorDTO tutorDTO) {
-        return tutorService.updateTutor(tutorId, tutorDTO);
     }
 }

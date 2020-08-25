@@ -33,7 +33,7 @@ export class TutorProfileComponent implements OnInit {
 
   onSubmit() {
     this.tutorProfileFormSaveState = FormSaveStateEnum.SAVING;
-    this.authenticatedTutorService.submitUpdate(this.tutorId, this.tutorProfileForm.value as TutorInput).then(
+    this.authenticatedTutorService.submitUpdate(this.tutorProfileForm.value as TutorInput).then(
       () => {
         this.tutorProfileFormSaveState = FormSaveStateEnum.JUST_SAVED;
         setTimeout(() => {
