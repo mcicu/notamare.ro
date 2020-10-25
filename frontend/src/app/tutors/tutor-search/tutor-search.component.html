@@ -1,0 +1,6 @@
+<div class="filters" fxLayout="column">
+  <mat-form-field appearance="fill">
+    <input #queryInput matInput placeholder="Ex: Matematica Bucuresti "/>
+    <button (click)="doSearch(queryInput.value)" mat-raised-button matSuffix>Cauta</button>
+  </mat-form-field>
+</div>

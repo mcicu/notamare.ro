@@ -7,7 +7,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import ro.notamare.backend._security.UserPrincipal;
 import ro.notamare.backend.dtos.TutorDTO;
-import ro.notamare.backend.entities.Tutor;
 import ro.notamare.backend.services.TutorService;
 
 import java.text.MessageFormat;
@@ -21,7 +20,7 @@ public class AuthenticatedTutorController {
     private final TutorService tutorService;
 
     @GetMapping
-    public Tutor getCurrentTutor(@AuthenticationPrincipal UserPrincipal principal) {
+    public TutorDTO getCurrentTutor(@AuthenticationPrincipal UserPrincipal principal) {
         String tutorId = principal.getAuthenticatedUser().getTutorId();
 
         if (StringUtils.isEmpty(tutorId)) {

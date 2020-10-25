@@ -2,6 +2,9 @@ package ro.notamare.backend.services;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.elasticsearch.common.unit.Fuzziness;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.stereotype.Service;
 import ro.notamare.backend.dtos.TutorDTO;
 import ro.notamare.backend.entities.Tutor;
@@ -11,6 +14,7 @@ import ro.notamare.backend.repositories.TutorRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @AllArgsConstructor
@@ -25,16 +29,16 @@ public class TutorService {
                 .collect(Collectors.toList());
     }
 
-    public Optional<Tutor> findTutorById(String tutorId) {
-        Optional<Tutor> optionalTutor = tutorRepository.findById(tutorId);
-        if (false == optionalTutor.isPresent())
+    public Optional<TutorDTO> findTutorById(String tutorId) {
+        Optional<TutorDTO> optionalTutorDTO = tutorRepository.findById(tutorId).map(TutorMapper::toDTO);
+        if (false == optionalTutorDTO.isPresent())
             log.error("No tutor found for tutorId = {}", tutorId);
-        return optionalTutor;
+        return optionalTutorDTO;
     }
 
     public String createEmptyTutor() {
         Tutor tutor = new Tutor();
-        tutorRepository.insert(tutor);
+        tutorRepository.save(tutor);
         return tutor.getId();
     }
 
@@ -43,5 +47,16 @@ public class TutorService {
         tutor.setId(tutorId);
         tutorRepository.save(tutor);
         return TutorMapper.toDTO(tutor);
+    }
+
+    //TODO score result items
+    public List<TutorDTO> searchTutors(String query) {
+        QueryBuilder searchQuery = QueryBuilders.multiMatchQuery(query, "description", "location", "sessionPreferences.subjects")
+                .fuzziness(Fuzziness.AUTO);
+        Iterable<Tutor> resultIterable = tutorRepository.search(searchQuery);
+
+        return StreamSupport.stream(resultIterable.spliterator(), false)
+                .map(TutorMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }

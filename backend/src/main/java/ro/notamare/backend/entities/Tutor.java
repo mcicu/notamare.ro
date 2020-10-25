@@ -2,7 +2,7 @@ package ro.notamare.backend.entities;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.elasticsearch.annotations.Document;
 import ro.notamare.backend.enums.SessionDuration;
 import ro.notamare.backend.enums.SessionPlace;
 import ro.notamare.backend.enums.StudentLevel;
@@ -10,7 +10,7 @@ import ro.notamare.backend.enums.StudentLevel;
 import java.util.LinkedList;
 import java.util.List;
 
-@Document(collection = "tutors")
+@Document(indexName = "tutors")
 @Data
 public class Tutor {
 

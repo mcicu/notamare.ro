@@ -12,9 +12,12 @@ export class TutorsComponent implements OnInit {
   private tutors: Tutor[] = [];
 
   constructor(private tutorListService: TutorListService) {
+    tutorListService.queryTutors('');
   }
 
   ngOnInit() {
-    this.tutorListService.getTutors().subscribe(value => this.tutors = value);
+    this.tutorListService.tutors$.subscribe(
+      next => this.tutors = next
+    );
   }
 }

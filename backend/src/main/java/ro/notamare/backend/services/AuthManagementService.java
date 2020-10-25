@@ -9,11 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ro.notamare.backend._security.JwtHandler;
 import ro.notamare.backend._security.UserPrincipal;
-import ro.notamare.backend.dtos.AuthenticationInput;
-import ro.notamare.backend.dtos.AuthenticationOutput;
-import ro.notamare.backend.dtos.RegistrationInput;
-import ro.notamare.backend.dtos.RegistrationOutput;
-import ro.notamare.backend.entities.Tutor;
+import ro.notamare.backend.dtos.*;
 import ro.notamare.backend.entities.User;
 import ro.notamare.backend.exceptions.BusinessException;
 import ro.notamare.backend.repositories.UserRepository;
@@ -37,7 +33,7 @@ public class AuthManagementService {
         user.setEmail(input.getEmail());
         user.setPassword(bCryptPasswordEncoder.encode(input.getPassword()));
         user.setTutorId(tutorService.createEmptyTutor());
-        userRepository.insert(user);
+        userRepository.save(user);
 
         String jwt = jwtHandler.create(input.getEmail());
         return RegistrationOutput.builder()
@@ -48,13 +44,13 @@ public class AuthManagementService {
 
     public AuthenticationOutput loginUser(AuthenticationInput input) {
         UserPrincipal principal = this.authenticate(input);
-        Optional<Tutor> optionalTutor = tutorService.findTutorById(principal.getAuthenticatedUser().getTutorId());
+        Optional<TutorDTO> optionalTutor = tutorService.findTutorById(principal.getAuthenticatedUser().getTutorId());
         String jwt = jwtHandler.create(input.getEmail());
 
         return AuthenticationOutput.builder()
                 .jwt(jwt)
                 .email(input.getEmail())
-                .name(optionalTutor.map(Tutor::getName).orElse(null))
+                .name(optionalTutor.map(TutorDTO::getName).orElse(null))
                 .build();
     }
 

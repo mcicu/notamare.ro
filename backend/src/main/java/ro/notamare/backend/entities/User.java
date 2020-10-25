@@ -2,9 +2,9 @@ package ro.notamare.backend.entities;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.elasticsearch.annotations.Document;
 
-@Document(collection = "users")
+@Document(indexName = "users")
 @Data
 public class User {
 

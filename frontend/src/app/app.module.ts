@@ -38,6 +38,7 @@ import {JWTConfigurerModule} from './jwt-configurer.module';
 import { RegisterComponent } from './authentication/register/register.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { TutorSearchComponent } from './tutors/tutor-search/tutor-search.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     TutorProfileComponent,
     LoginComponent,
     EnumToMapPipe,
-    RegisterComponent
+    RegisterComponent,
+    TutorSearchComponent
   ],
     imports: [
         BrowserModule,
