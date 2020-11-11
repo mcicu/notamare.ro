@@ -1,6 +1,16 @@
-<div class="filters" fxLayout="column">
-  <mat-form-field appearance="fill">
-    <input #queryInput matInput placeholder="Ex: Matematica Bucuresti "/>
-    <button (click)="doSearch(queryInput.value)" mat-raised-button matSuffix>Cauta</button>
-  </mat-form-field>
+<div fxLayout="row">
+
+  <form #f="ngForm" (ngSubmit)="doSearch(queryInput.value)" fxFlex>
+    <div class="search-box" fxLayoutGap="10px">
+      <mat-form-field appearance="standard" fxFlex="1 1 100">
+        <span matPrefix >
+          <mat-icon>search</mat-icon>
+        </span>
+        <input #queryInput matInput placeholder="Ex: Matematica Bucuresti "/>
+      </mat-form-field>
+      <div fxFlex fxFlexAlign="center">
+        <button mat-raised-button>Cauta</button>
+      </div>
+    </div>
+  </form>
 </div>

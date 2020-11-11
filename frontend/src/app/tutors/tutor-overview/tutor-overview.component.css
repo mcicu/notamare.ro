@@ -2,7 +2,7 @@
   background-color: white;
   padding: 30px;
   box-shadow: 0 1px 6px -3px #b1b1b1;
-  border:1px solid #e9e9e9;
+  border: 1px solid #e9e9e9;
   font-size: 14px;
 }
 
@@ -17,14 +17,11 @@ h1, h2, h3 {
 
 .delimited-row {
   padding: 10px 20px;
-  /*border: 1px solid #f2f2f6;
-  background-color: #f9f9fd;*/
 }
 
 .tutor-photo img {
-  border-radius: 100%;
-  max-width: 100px;
-  border: 5px solid #eeeeee;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .tutor-name {
@@ -34,7 +31,7 @@ h1, h2, h3 {
 }
 
 .tutor-session {
-  font-size: 1.1em;
+  font-size: 1.5em;
   font-weight: 600;
   color: #444;
 }
@@ -50,6 +47,7 @@ h1, h2, h3 {
   text-align: justify;
   font-family: 'Roboto Slab', serif;
   font-size: 1em;
+  white-space: pre-wrap;
 }
 
 .tutor-call-button a i {

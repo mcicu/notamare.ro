@@ -1,32 +1,33 @@
 <div *ngIf="tutor" class="tutor-overview">
   <div fxLayout="column" fxLayoutGap="10px">
     <div class="delimited-row" fxLayout="row" fxLayoutAlign="left center" fxLayoutGap="15px">
-      <div class="tutor-photo">
-        <img [src]="tutor.image">
-      </div>
       <div fxFlex="1 1" fxLayout="column" fxLayoutGap="20px">
         <div class="tutor-name">{{tutor.name}}</div>
-        <!--<mat-divider></mat-divider>-->
-        <div class="tutor-session" fxLayout="row" fxLayoutGap="10px">
-          <div class="tutor-session">
-            {{tutor.sessionPreferences.price}} RON / {{sessionDurationEnum[tutor.sessionPreferences.duration]}}
-          </div>
+        <mat-divider></mat-divider>
+        <div class="tutor-call-button">
+          <a [href]="'tel:' + tutor.phoneNumber" color="primary" mat-stroked-button>
+            <i class="fa fa-phone"></i>
+            {{tutor.phoneNumber}}
+          </a>
         </div>
+
+      </div>
+      <div class="tutor-photo">
+        <img [src]="tutor.image | staticResourceQualifier">
       </div>
     </div>
 
-    <div class="delimited-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between center"
+    <div class="delimited-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign=" center"
          fxLayoutGap="20px">
-      <div class="tutor-call-button">
-        <a [href]="'tel:' + tutor.phoneNumber" color="primary" mat-stroked-button>
-          <i class="fa fa-phone"></i>
-          {{tutor.phoneNumber}}
-        </a>
-      </div>
       <mat-chip-list>
         <mat-chip *ngFor="let subject of tutor.sessionPreferences.subjects" color="primary"
                   selected>{{subject}}</mat-chip>
       </mat-chip-list>
+      <div fxLayout="row" fxLayoutGap="10px">
+        <div class="tutor-session">
+          {{tutor.sessionPreferences.price}} RON / {{sessionDurationEnum[tutor.sessionPreferences.duration]}}
+        </div>
+      </div>
     </div>
 
     <div class="delimited-row">

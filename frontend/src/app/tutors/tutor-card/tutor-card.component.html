@@ -1,12 +1,12 @@
 <mat-card fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutGap="10px">
   <div fxFlex="1 1 150px">
-    <img [src]="tutor.image" style="background-color: #363999" width="100%"/>
+    <img [src]="tutor.image | staticResourceQualifier" class="tutor-image"/>
   </div>
 
   <mat-card-content fxFlex="1 1 100">
     <h2>{{tutor.name}}</h2>
     <h4>{{tutor.sessionPreferences.subjects.join(", ")}}</h4>
-    <div>
+    <div class="tutor-description">
       {{tutor.description}}
     </div>
   </mat-card-content>
@@ -14,11 +14,11 @@
   <div fxFlex="1 0 170px" fxLayout="column" fxLayoutGap="10px">
     <div>
       <div class="center-text" fxFlex="0 0 100" fxLayout="row" fxLayoutGap="5px">
-        <div class="tutor-reviews-summary" fxFlex="1 1 40" fxLayout="column">
+        <!--<div class="tutor-reviews-summary" fxFlex="1 1 40" fxLayout="column">
           <div class="stars"><i class="fa fa-star"></i> <br/> T / 5</div>
 
-        </div>
-        <div class="tutor-pricing" fxFlex="1 1 60" fxLayout="column">
+        </div>-->
+        <div class="tutor-pricing" fxFlex="1 1 100" fxLayout="column">
           <div class="price">{{tutor.sessionPreferences.price}} ron</div>
           <div class="time">{{sessionDurationEnum[tutor.sessionPreferences.duration]}}</div>
         </div>
@@ -27,8 +27,8 @@
     <div>
       <button [routerLink]="['overview', tutor.id]" color="primary" fxFlex="1 1 100" mat-raised-button>Contact</button>
     </div>
-    <div>
+    <!--<div>
       <a color="accent" fxFlex="1 1 100" mat-stroked-button>Aprecieri</a>
-    </div>
+    </div>-->
   </div>
 </mat-card>

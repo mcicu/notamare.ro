@@ -1,9 +1,11 @@
-<div class="main-content" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
-  <div class="left-column" fxFlex="1 1 45" fxLayout="column" fxLayoutGap="10px">
-    <app-tutor-search></app-tutor-search>
-    <app-tutor-card *ngFor="let tutor of tutors" [tutor]="tutor"></app-tutor-card>
-  </div>
-  <div class="right-column sticky-top" fxFlex="1 1 45">
-    <router-outlet></router-outlet>
+<div fxFlex="1 1 100" fxLayout="row" fxLayoutAlign="center">
+  <div fxFlex.gt-md="1 1 90" fxFlex.lt-lg="1 1 97" fxLayoutGap="10px">
+    <div fxFlex="1 1 100" fxLayout="column" fxLayoutGap="10px">
+      <app-tutor-search></app-tutor-search>
+      <app-tutor-card *ngFor="let tutor of tutors" [tutor]="tutor"></app-tutor-card>
+    </div>
+    <div class="sticky-top" fxFlex="1 1 100" fxHide.lt-md="true">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

@@ -1,14 +1,17 @@
 package ro.notamare.backend.controllers;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ro.notamare.backend._security.UserPrincipal;
 import ro.notamare.backend.dtos.TutorDTO;
 import ro.notamare.backend.services.TutorService;
 
+import java.net.URI;
 import java.text.MessageFormat;
 
 @RestController
@@ -19,7 +22,7 @@ public class AuthenticatedTutorController {
 
     private final TutorService tutorService;
 
-    @GetMapping
+    @GetMapping(produces = "application/json")
     public TutorDTO getCurrentTutor(@AuthenticationPrincipal UserPrincipal principal) {
         String tutorId = principal.getAuthenticatedUser().getTutorId();
 
@@ -36,5 +39,13 @@ public class AuthenticatedTutorController {
     public TutorDTO updateTutor(@RequestBody TutorDTO tutorDTO, @AuthenticationPrincipal UserPrincipal principal) {
         String tutorId = principal.getAuthenticatedUser().getTutorId();
         return tutorService.updateTutor(tutorId, tutorDTO);
+    }
+
+    @PutMapping(path = "/image", consumes = "multipart/form-data", produces = "text/plain")
+    public ResponseEntity<?> updateImage(@RequestParam("file") MultipartFile image, @AuthenticationPrincipal UserPrincipal principal) {
+        String tutorId = principal.getAuthenticatedUser().getTutorId();
+        String imageFilename = tutorService.updateProfileImage(tutorId, image);
+        URI uri = URI.create(imageFilename);
+        return ResponseEntity.created(uri).build();
     }
 }

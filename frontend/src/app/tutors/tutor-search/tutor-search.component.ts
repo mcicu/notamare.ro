@@ -12,6 +12,7 @@ export class TutorSearchComponent {
   }
 
   doSearch(query: string) {
+    console.log('Do search:' + query);
     this.tutorListService.queryTutors(query);
   }
 }

@@ -15,7 +15,7 @@ app-tutor-card {
 
 .tutor-pricing .time {
   font-weight: bold;
-  font-size:1em;
+  font-size: 1em;
   line-height: 2em;
 }
 
@@ -33,4 +33,17 @@ app-tutor-card {
 
 .fa-star {
   color: #ffa745
+}
+
+img.tutor-image {
+  background-color: #363999;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.tutor-description {
+  text-align: justify;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1em;
+  white-space: pre-wrap;
 }

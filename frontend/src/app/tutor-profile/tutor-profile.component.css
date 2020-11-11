@@ -27,3 +27,8 @@ mat-form-field {
 .tutor-session-price {
   width: 100px;
 }
+
+#profileImage {
+  max-width: 130px;
+  max-height: 130px;
+}

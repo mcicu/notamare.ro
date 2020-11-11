@@ -30,15 +30,16 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
 import {EnumToMapPipe} from './utils/enum-to-map.pipe';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthenticatedTutorService} from './services/authenticated-tutor.service';
 import {LoginComponent} from './authentication/login/login.component';
 import {AuthenticationManager} from './services/authentication-manager.service';
 import {JWTConfigurerModule} from './jwt-configurer.module';
-import { RegisterComponent } from './authentication/register/register.component';
+import {RegisterComponent} from './authentication/register/register.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import { TutorSearchComponent } from './tutors/tutor-search/tutor-search.component';
+import {TutorSearchComponent} from './tutors/tutor-search/tutor-search.component';
+import {StaticResourceQualifierPipe} from './utils/static-resource-qualifier.pipe';
 
 @NgModule({
   declarations: [
@@ -50,19 +51,20 @@ import { TutorSearchComponent } from './tutors/tutor-search/tutor-search.compone
     TutorProfileComponent,
     LoginComponent,
     EnumToMapPipe,
+    StaticResourceQualifierPipe,
     RegisterComponent,
     TutorSearchComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule,
-        FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule,
-        MatCardModule, MatRippleModule, MatSelectModule, MatIconModule, MatInputModule,
-        MatFormFieldModule, MatCheckboxModule, HttpClientModule, ReactiveFormsModule,
-        JWTConfigurerModule, MatProgressSpinnerModule, MatButtonToggleModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSliderModule, MatToolbarModule, MatSlideToggleModule, MatButtonModule, MatChipsModule,
+    FlexLayoutModule, MatTabsModule, MatGridListModule, MatSidenavModule, MatListModule,
+    MatCardModule, MatRippleModule, MatSelectModule, MatIconModule, MatInputModule,
+    MatFormFieldModule, MatCheckboxModule, HttpClientModule, ReactiveFormsModule,
+    JWTConfigurerModule, MatProgressSpinnerModule, MatButtonToggleModule, FormsModule
+  ],
   providers: [TutorListService, AuthenticatedTutorService, AuthenticationManager],
   bootstrap: [AppComponent]
 })

@@ -3,6 +3,7 @@ import {Tutor} from '../dto/tutor';
 import {TutorInput} from '../dto/tutor-input';
 import {HttpClient} from '@angular/common/http';
 import {AuthenticationManager} from './authentication-manager.service';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class AuthenticatedTutorService {
@@ -26,6 +27,14 @@ export class AuthenticatedTutorService {
         resolve('SAVED');
       }, reject);
     });
+  }
+
+  uploadProfilePicture(file: File): Promise<string> {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.put('/backend/tutors/current/image', formData, {observe: 'response'})
+      .pipe(map(value => value.headers.get('Location')))
+      .toPromise();
   }
 
   logout() {

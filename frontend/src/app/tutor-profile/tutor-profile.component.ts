@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {SessionDurationEnum, SessionPlaceEnum, StudentLevelEnum, Tutor} from '../dto/tutor';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthenticatedTutorService} from '../services/authenticated-tutor.service';
 import {TutorInput} from '../dto/tutor-input';
 import {FormSaveStateEnum} from '../enums/form-save-state.enum';
-import {EnumToMapPipe} from '../utils/enum-to-map.pipe';
+import {StaticResourceQualifierPipe} from '../utils/static-resource-qualifier.pipe';
 
 @Component({
   selector: 'app-tutor-profile',
@@ -13,6 +13,8 @@ import {EnumToMapPipe} from '../utils/enum-to-map.pipe';
 })
 export class TutorProfileComponent implements OnInit {
 
+  @ViewChild('profileImage') profileImage: ElementRef<HTMLImageElement>;
+
   tutorProfileForm: FormGroup;
   tutorProfileFormSaveState = FormSaveStateEnum.SAVED;
   formSaveStateEnum = FormSaveStateEnum;
@@ -20,7 +22,8 @@ export class TutorProfileComponent implements OnInit {
   sessionPlaceEnum = SessionPlaceEnum;
   studentLevelEnum = StudentLevelEnum;
   private tutorId: string;
-  private enumToMapPipe = new EnumToMapPipe();
+
+  private staticResourceQualifierPipe = new StaticResourceQualifierPipe();
 
   constructor(private authenticatedTutorService: AuthenticatedTutorService) {
   }
@@ -36,7 +39,7 @@ export class TutorProfileComponent implements OnInit {
   buildTutorProfileForm(tutor: Tutor): FormGroup {
     return new FormGroup({
       name: new FormControl(tutor.name),
-      image: new FormControl(null),
+      image: new FormControl(tutor.image),
       phoneNumber: new FormControl(tutor.phoneNumber),
       description: new FormControl(tutor.description),
       location: new FormControl(tutor.location),
@@ -63,6 +66,15 @@ export class TutorProfileComponent implements OnInit {
         }, 2000);
       }
     );
+  }
+
+  onProfileImageChange(event) {
+    const file: File = event.target.files[0];
+    this.authenticatedTutorService.uploadProfilePicture(file)
+      .then(filename => {
+        this.tutorProfileForm.patchValue({image: filename});
+        this.profileImage.nativeElement.src = this.staticResourceQualifierPipe.transform(filename);
+      });
   }
 
   private resetFormSaveState() {

@@ -2,11 +2,14 @@
   <form (ngSubmit)="onSubmit()" *ngIf="tutorProfileForm" [formGroup]="tutorProfileForm"
         class="one-column"
         fxFlex="1 1" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="40px">
-    <div class="left-column" fxLayout="column" fxLayoutAlign="flex-start center">
-      <a mat-button>
-        TODO IMAGE
-        <!--<img [src]="tutor.image" width="150px"/>-->
-      </a>
+    <div class="left-column" fxLayout="column" fxLayoutAlign="flex-start center" fxLayoutGap="10px">
+      <img #profileImage [src]="tutorProfileForm.get('image').value | staticResourceQualifier" id="profileImage">
+      <input formControlName="image" type="hidden">
+      <div>
+        <input #selectImage (change)="onProfileImageChange($event)"
+               [hidden]="true" accept="image/png,image/jpeg" id="file" name="file" type="file">
+        <button (click)='selectImage.click()' color="primary" mat-flat-button type="button">Alege imagine...</button>
+      </div>
     </div>
     <div class="right-column" fxFlex="1 1" fxLayout="column" fxLayoutGap="10px">
       <mat-form-field>
@@ -75,12 +78,13 @@
         <textarea formControlName="description" matInput rows="10"></textarea>
       </mat-form-field>
 
-      <mat-slide-toggle formControlName="visible" #toggleVisibility>
+      <mat-slide-toggle #toggleVisibility formControlName="visible">
         {{toggleVisibility.checked ? 'Doresc' : 'Nu doresc'}} ca profilul meu sa apara pe pagina de cautare
       </mat-slide-toggle>
 
       <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-        <button [disabled]="tutorProfileFormSaveState === formSaveStateEnum.SAVING" color="primary" mat-flat-button>
+        <button [disabled]="tutorProfileFormSaveState === formSaveStateEnum.SAVING"
+                color="primary" mat-flat-button type="submit">
           Salveaza modificarile
         </button>
         <mat-spinner *ngIf="tutorProfileFormSaveState === formSaveStateEnum.SAVING" [diameter]="25"></mat-spinner>
