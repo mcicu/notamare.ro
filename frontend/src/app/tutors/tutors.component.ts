@@ -9,7 +9,7 @@ import {Tutor} from '../dto/tutor';
 })
 export class TutorsComponent implements OnInit {
 
-  private tutors: Tutor[] = [];
+  tutors: Tutor[] = [];
 
   constructor(private tutorListService: TutorListService) {
     tutorListService.queryTutors('');

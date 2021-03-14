@@ -1,6 +1,4 @@
 .all-content {
   display: flex;
   flex-flow: column;
-  width: 100vw;
-  height: 100vh;
 }

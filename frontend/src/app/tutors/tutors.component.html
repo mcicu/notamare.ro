@@ -4,7 +4,7 @@
       <app-tutor-search></app-tutor-search>
       <app-tutor-card *ngFor="let tutor of tutors" [tutor]="tutor"></app-tutor-card>
     </div>
-    <div class="sticky-top" fxFlex="1 1 100" fxHide.lt-md="true">
+    <div class="sticky-top" fxFlex="1 1 100" fxHide.lt-md="true" fxFlexAlign="start">
       <router-outlet></router-outlet>
     </div>
   </div>
