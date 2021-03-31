@@ -1,6 +1,6 @@
 package ro.notamare.backend.controllers;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +11,7 @@ import ro.notamare.backend.dtos.RegistrationOutput;
 import ro.notamare.backend.services.AuthManagementService;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserAuthenticationController {
 
     private final AuthManagementService authManagementService;

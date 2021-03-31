@@ -1,6 +1,6 @@
 package ro.notamare.backend.controllers;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import ro.notamare.backend.dtos.TutorDTO;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/tutors")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class TutorController {
 
     private final TutorService tutorService;

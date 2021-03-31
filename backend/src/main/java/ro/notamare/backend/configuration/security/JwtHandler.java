@@ -1,4 +1,4 @@
-package ro.notamare.backend._security;
+package ro.notamare.backend.configuration.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

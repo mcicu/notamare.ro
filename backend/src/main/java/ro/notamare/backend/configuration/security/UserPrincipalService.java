@@ -1,6 +1,6 @@
-package ro.notamare.backend._security;
+package ro.notamare.backend.configuration.security;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,7 +11,7 @@ import ro.notamare.backend.repositories.UserRepository;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserPrincipalService implements UserDetailsService {
 
     private final UserRepository userRepository;

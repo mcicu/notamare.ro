@@ -1,13 +1,13 @@
 package ro.notamare.backend.controllers;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ro.notamare.backend._security.UserPrincipal;
+import ro.notamare.backend.configuration.security.UserPrincipal;
 import ro.notamare.backend.dtos.TutorDTO;
 import ro.notamare.backend.services.TutorService;
 
@@ -17,7 +17,7 @@ import java.text.MessageFormat;
 @RestController
 @PreAuthorize("isAuthenticated()")
 @RequestMapping(path = "/tutors/current")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AuthenticatedTutorController {
 
     private final TutorService tutorService;

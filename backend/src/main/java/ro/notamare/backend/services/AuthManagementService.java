@@ -1,14 +1,14 @@
 package ro.notamare.backend.services;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import ro.notamare.backend._security.JwtHandler;
-import ro.notamare.backend._security.UserPrincipal;
+import ro.notamare.backend.configuration.security.JwtHandler;
+import ro.notamare.backend.configuration.security.UserPrincipal;
 import ro.notamare.backend.dtos.*;
 import ro.notamare.backend.entities.User;
 import ro.notamare.backend.exceptions.BusinessException;
@@ -17,7 +17,7 @@ import ro.notamare.backend.repositories.UserRepository;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AuthManagementService {
 
     private final UserRepository userRepository;

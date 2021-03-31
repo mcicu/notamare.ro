@@ -1,6 +1,6 @@
-package ro.notamare.backend._security;
+package ro.notamare.backend.configuration.security;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ro.notamare.backend.entities.User;
@@ -8,7 +8,7 @@ import ro.notamare.backend.entities.User;
 import java.util.Collection;
 import java.util.LinkedList;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserPrincipal implements UserDetails {
 
     private final User user;

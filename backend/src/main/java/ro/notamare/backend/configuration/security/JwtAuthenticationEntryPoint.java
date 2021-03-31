@@ -1,4 +1,4 @@
-package ro.notamare.backend._security;
+package ro.notamare.backend.configuration.security;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
