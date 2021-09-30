@@ -3,7 +3,7 @@ package ro.notamare.backend.configuration.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ro.notamare.backend.entities.User;
+import ro.notamare.backend.entities.AbstractUser;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -11,11 +11,16 @@ import java.util.LinkedList;
 @RequiredArgsConstructor
 public class UserPrincipal implements UserDetails {
 
-    private final User user;
+    private final AbstractUser user;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return new LinkedList<>();
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getEmail();
     }
 
     @Override
@@ -24,8 +29,10 @@ public class UserPrincipal implements UserDetails {
     }
 
     @Override
-    public String getUsername() {
-        return user.getEmail();
+    public boolean isEnabled() {
+        return true;
+        //TODO use registration validation
+        //return user.isEnabled();
     }
 
     @Override
@@ -43,12 +50,7 @@ public class UserPrincipal implements UserDetails {
         return true;
     }
 
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
-    public User getAuthenticatedUser() {
+    public AbstractUser getAuthenticatedUser() {
         return user;
     }
 }

@@ -3,6 +3,11 @@
     <h2>Inregistrare</h2>
     <form [formGroup]="registerFormGroup" fxLayout="column">
       <mat-form-field>
+        <mat-label>Nume</mat-label>
+        <input formControlName="name" matInput/>
+      </mat-form-field>
+
+      <mat-form-field>
         <mat-label>E-mail</mat-label>
         <input formControlName="email" matInput/>
       </mat-form-field>
@@ -11,6 +16,9 @@
         <mat-label>Parola</mat-label>
         <input formControlName="password" matInput type="password"/>
       </mat-form-field>
+
+      <input formControlName="userType" type="hidden" ngModel="TUTOR" />
+
 
       <div fxFlex="" fxFlexAlign="end">
         <button (click)="onSubmit()" color="primary" mat-flat-button>Trimite</button>

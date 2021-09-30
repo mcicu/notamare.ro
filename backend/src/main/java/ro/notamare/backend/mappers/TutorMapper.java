@@ -13,6 +13,7 @@ public class TutorMapper {
     static {
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
         mapperFactory.classMap(TutorDTO.SessionPreferences.class, Tutor.SessionPreferences.class)
+                .mapNulls(false)
                 .byDefault().register();
         facade = mapperFactory.getMapperFacade(Tutor.class, TutorDTO.class);
     }
@@ -21,7 +22,7 @@ public class TutorMapper {
         return facade.map(entity);
     }
 
-    public static Tutor toEntity(TutorDTO dto) {
-        return facade.mapReverse(dto);
+    public static Tutor updateEntity(Tutor tutor, TutorDTO tutorDTO) {
+        return facade.mapReverse(tutorDTO, tutor);
     }
 }

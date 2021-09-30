@@ -1,8 +1,12 @@
 package ro.notamare.backend.dtos;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class ExceptionOutput {
     private final String message;
 }

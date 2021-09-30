@@ -1,30 +1,34 @@
 package ro.notamare.backend.entities;
 
-import lombok.Data;
-import org.springframework.data.annotation.Id;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.elasticsearch.annotations.Document;
 import ro.notamare.backend.enums.SessionDuration;
 import ro.notamare.backend.enums.SessionPlace;
 import ro.notamare.backend.enums.StudentLevel;
+import ro.notamare.backend.enums.UserType;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Document(indexName = "tutors")
-@Data
-public class Tutor {
+@Getter
+@Setter
+public class Tutor extends AbstractUser {
 
-    @Id
-    private String id;
-    private String name;
     private String image;
     private String phoneNumber;
     private String description;
     private String location;
-    private Boolean visible = false;
+    private boolean visible = false;
     private SessionPreferences sessionPreferences = new SessionPreferences();
 
-    @Data
+    public Tutor() {
+        super(UserType.TUTOR);
+    }
+
+    @Getter
+    @Setter
     public static class SessionPreferences {
         private Double price = 100d;
         private SessionDuration duration = SessionDuration.TWO_HOURS;

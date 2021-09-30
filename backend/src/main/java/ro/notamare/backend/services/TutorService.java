@@ -39,31 +39,25 @@ public class TutorService {
 
     public Optional<TutorDTO> findTutorById(String tutorId) {
         Optional<TutorDTO> optionalTutorDTO = tutorRepository.findById(tutorId).map(TutorMapper::toDTO);
-        if (false == optionalTutorDTO.isPresent())
+        if (optionalTutorDTO.isEmpty())
             log.error("No tutor found for tutorId = {}", tutorId);
         return optionalTutorDTO;
     }
 
-    public String createEmptyTutor() {
-        Tutor tutor = new Tutor();
-        tutorRepository.save(tutor);
-        return tutor.getId();
-    }
-
-    public TutorDTO updateTutor(String tutorId, TutorDTO tutorDTO) {
-        Tutor tutor = TutorMapper.toEntity(tutorDTO);
+    public TutorDTO updateTutor(Tutor tutor, TutorDTO tutorDTO) {
+        String tutorId = tutor.getId();
+        TutorMapper.updateEntity(tutor, tutorDTO);
         tutor.setId(tutorId);
         tutorRepository.save(tutor);
         return TutorMapper.toDTO(tutor);
     }
 
-    public String updateProfileImage(String tutorId, MultipartFile image) {
-        String filename = uploadProfileImage(tutorId, image);
+    public String updateProfileImage(Tutor tutor, MultipartFile image) {
+        String filename = uploadProfileImage(tutor.getId(), image);
 
-        TutorDTO tutorDTO = findTutorById(tutorId)
-                .orElseThrow(() -> new RuntimeException("Failed to fetch tutor " + tutorId));
+        TutorDTO tutorDTO = TutorMapper.toDTO(tutor);
         tutorDTO.setImage(filename);
-        updateTutor(tutorId, tutorDTO);
+        updateTutor(tutor, tutorDTO);
 
         return filename;
     }

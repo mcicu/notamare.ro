@@ -23,12 +23,15 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerFormGroup = new FormGroup({
+      name: new FormControl(),
       email: new FormControl(),
-      password: new FormControl()
+      password: new FormControl(),
+      userType: new FormControl()
     });
   }
 
   onSubmit() {
+    console.log(this.registerFormGroup.value);
     this.httpClient.post<RegistrationOutput>(
       '/backend/register',
       this.registerFormGroup.value

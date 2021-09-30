@@ -27,10 +27,10 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String jwt = parseJwtFromRequest(request);
-        if (false == StringUtils.isEmpty(jwt)) {
+        if (!StringUtils.isEmpty(jwt)) {
             DecodedJWT decodedJWT = jwtHandler.verify(jwt);
 
-            String email = decodedJWT.getSubject();
+            String email = decodedJWT.getClaim("email").asString();
             UserDetails principal = userPrincipalService.loadUserByUsername(email);
 
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(principal, null, principal.getAuthorities());
@@ -38,7 +38,6 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         }
 
         filterChain.doFilter(request, response);
-
     }
 
     private String parseJwtFromRequest(HttpServletRequest request) {

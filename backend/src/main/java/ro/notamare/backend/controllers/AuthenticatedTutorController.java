@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ro.notamare.backend.configuration.security.UserPrincipal;
 import ro.notamare.backend.dtos.TutorDTO;
+import ro.notamare.backend.entities.Tutor;
 import ro.notamare.backend.services.TutorService;
 
 import java.net.URI;
@@ -24,7 +25,7 @@ public class AuthenticatedTutorController {
 
     @GetMapping(produces = "application/json")
     public TutorDTO getCurrentTutor(@AuthenticationPrincipal UserPrincipal principal) {
-        String tutorId = principal.getAuthenticatedUser().getTutorId();
+        String tutorId = principal.getAuthenticatedUser().getId();
 
         if (StringUtils.isEmpty(tutorId)) {
             throw new RuntimeException(MessageFormat.format("Null or empty value passed (tutorId = {0}", tutorId));
@@ -37,14 +38,14 @@ public class AuthenticatedTutorController {
 
     @PutMapping(consumes = "application/json", produces = "application/json")
     public TutorDTO updateTutor(@RequestBody TutorDTO tutorDTO, @AuthenticationPrincipal UserPrincipal principal) {
-        String tutorId = principal.getAuthenticatedUser().getTutorId();
-        return tutorService.updateTutor(tutorId, tutorDTO);
+        Tutor tutor = (Tutor) principal.getAuthenticatedUser();
+        return tutorService.updateTutor(tutor, tutorDTO);
     }
 
     @PutMapping(path = "/image", consumes = "multipart/form-data", produces = "text/plain")
     public ResponseEntity<?> updateImage(@RequestParam("file") MultipartFile image, @AuthenticationPrincipal UserPrincipal principal) {
-        String tutorId = principal.getAuthenticatedUser().getTutorId();
-        String imageFilename = tutorService.updateProfileImage(tutorId, image);
+        Tutor tutor = (Tutor) principal.getAuthenticatedUser();
+        String imageFilename = tutorService.updateProfileImage(tutor, image);
         URI uri = URI.create(imageFilename);
         return ResponseEntity.created(uri).build();
     }

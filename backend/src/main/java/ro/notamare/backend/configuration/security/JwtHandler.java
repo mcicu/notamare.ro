@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.stereotype.Component;
+import ro.notamare.backend.entities.AbstractUser;
 
 import java.util.Date;
 
@@ -19,10 +20,12 @@ public class JwtHandler {
         return jwtVerifier.verify(jwt);
     }
 
-    public String create(String subject) {
+    public String create(AbstractUser user) {
         return JWT.create()
                 .withIssuedAt(new Date())
-                .withSubject(subject)
+                .withSubject(user.getId())
+                .withClaim("email", user.getEmail())
+                .withClaim("name", user.getName())
                 .sign(hmac256Algorithm);
     }
 }
